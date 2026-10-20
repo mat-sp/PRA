@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2f5870">
-<meta name="description" content="Generador de medidas para los programas de refuerzo del aprendizaje. IES Sancti Petri, San Fernando. Selecciona, personaliza y copia tus medidas para Séneca.">
+<meta name="description" content="Generador de medidas para los programas de refuerzo del aprendizaje y profundización del IES Sancti Petri. Propuestas adaptadas a las orientaciones compartidas por PT, editables para copiar en Séneca.">
 <title>PRA y profundización · IES Sancti Petri</title>
 <style>
 :root{--navy:#2f5870;--navy-dark:#254a61;--cyan:#2387a4;--cyan-dark:#1b718b;--pale:#edf5f9;--light:#dceaf3;--line:#c8d4db;--ink:#263944;--muted:#526b79;--bg:#f4f6f7;--danger:#993d32}
@@ -47,9 +47,10 @@ dialog{width:min(560px,calc(100vw - 28px));padding:0;border:1px solid #abc1cf;bo
     </section>
   </div>
   <details class="review-details"><summary>Categorías oficiales y referencias</summary><p>El artículo 33 de la Orden de ESO, en su redacción de agosto de 2026, dirige el PRA al alumnado que no promociona, al que promociona con materias anteriores no superadas, al que presenta dificultades de aprendizaje que justifican su inclusión y al alumnado con NEAE que le impiden seguir su aprendizaje con aprovechamiento. Estas son las cuatro categorías principales. El orden mostrado es orientativo de uso habitual; no representa una estadística de frecuencia del centro.</p><p>Las opciones del segundo nivel concretan las necesidades de apoyo dentro de NEAE y no constituyen tipos independientes de PRA. Se utilizan denominaciones de la LOE y del protocolo andaluz de identificación de NEAE. Las medidas se individualizan con el equipo docente, tutoría y Orientación.</p><p>La profundización se dirige al alumnado especialmente motivado para el aprendizaje y al alumnado con altas capacidades intelectuales. El refuerzo mantiene los referentes de evaluación aplicables; la profundización enriquece los saberes sin modificar los criterios ordinarios.</p><p>Referencias: <a href="https://www.juntadeandalucia.es/boja/2026/168/c03/2" target="_blank" rel="noopener noreferrer">Orden de 31 de agosto de 2026, art. 7 (modificación del art. 33 de ESO)</a>; <a href="https://www.juntadeandalucia.es/boja/2023/104/36" target="_blank" rel="noopener noreferrer">Orden de 30 de mayo de 2023 (ESO), arts. 32 y 34–36</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a71" target="_blank" rel="noopener noreferrer">LOE, art. 71.2</a>; <a href="https://blogsaverroes.juntadeandalucia.es/3033dea/aclaraciones-terminologicas/" target="_blank" rel="noopener noreferrer">EOEE de dificultades de aprendizaje de Granada: terminología del protocolo de 8 de marzo de 2017</a>.</p></details>
+  <details class="review-details" id="ptGuidance"><summary>Orientaciones del PT del centro</summary><p>Propuestas revisadas a partir de los documentos «Estrategias NEAE» e «Intervenciones NEAE», compartidos por PT del IES Sancti Petri. Los materiales de consulta están firmados por @psico_mporienta y @edumagiaenelauladeal. Se han adaptado a Secundaria y a los cinco apartados del programa.</p><p>Se aplican según las necesidades observadas y los apoyos acordados con PT y Orientación: una misma dificultad puede requerir respuestas diferentes. Las propuestas de discapacidad sensorial o física y vulnerabilidad socioeducativa son adaptaciones complementarias con un enfoque similar, ya que los documentos no incluyen fichas específicas para esos perfiles. Las pautas de planificación, participación y regulación emocional se integran de forma transversal; las altas capacidades se trabajan en profundización.</p></details>
   <noscript><p>Activa JavaScript en tu navegador para seleccionar y copiar las medidas.</p></noscript>
 </main>
-<footer class="site-footer"><p>Web realizada por <strong>Diego Bernal Montañés</strong>. © 2026.</p><p>Inspirada en el <a href="https://rcabreratic-comares.github.io/PRA/" target="_blank" rel="noopener noreferrer">Generador de PRA de @rcabreratic · IES Marqués de Comares</a>.</p></footer>
+<footer class="site-footer"><p>Web realizada por <strong>Diego Bernal Montañés</strong> · IES Sancti Petri</p><p>Inspirada en el <a href="https://rcabreratic-comares.github.io/PRA/" target="_blank" rel="noopener noreferrer">Generador de PRA de @rcabreratic · IES Marqués de Comares</a>.</p></footer>
 <dialog id="confirmDialog" aria-labelledby="confirmTitle"><div class="panel-head blue"><h2 id="confirmTitle">Confirmar acción</h2></div><div class="modal-body"><p id="confirmMessage"></p></div><div class="modal-footer"><button class="btn" id="confirmCancel" type="button">Cancelar</button><button class="btn primary" id="confirmAccept" type="button">Continuar</button></div></dialog>
 <dialog id="manualCopy" aria-labelledby="manualCopyTitle"><div class="panel-head blue"><h2 id="manualCopyTitle">Copiar texto</h2><button class="icon-btn" type="button" data-close="manualCopy" aria-label="Cerrar">✕</button></div><div class="modal-body"><p class="help">El navegador no ha permitido copiar automáticamente. El texto está seleccionado: utiliza la opción Copiar de tu dispositivo o Ctrl+C / ⌘C.</p><div class="field"><label for="manualText">Texto seleccionado</label><textarea id="manualText" rows="9" readonly></textarea></div></div><div class="modal-footer"><button class="btn primary" type="button" data-close="manualCopy">Cerrar</button></div></dialog>
 <div class="toast" id="status" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -137,6 +138,14 @@ const PROFILES = [
   "symbol": "✎",
   "programme": "refuerzo",
   "fileLabel": "Disgrafía",
+  "group": "neae-detail"
+ },
+ {
+  "id": "dea_ortografia",
+  "label": "Dificultad específica en el aprendizaje de la escritura (disortografía)",
+  "symbol": "Ab",
+  "programme": "refuerzo",
+  "fileLabel": "Disortografía",
   "group": "neae-detail"
  },
  {
@@ -238,358 +247,46 @@ const PROFILES = [
 ];
 const MEASURES = [
  {
-  "id": "m1",
+  "id": "m20",
   "sectionId": 1,
-  "profile": "tdah",
-  "text": "Organizar las tareas en secuencias breves, con pasos explícitos y una comprobación al terminar cada tramo."
+  "profile": "general",
+  "text": "Combinar práctica guiada, situaciones de aplicación y tareas de síntesis sobre los aprendizajes en los que se hayan detectado dificultades."
  },
  {
-  "id": "m2",
+  "id": "ngenerals1i2",
   "sectionId": 1,
-  "profile": "tdah",
-  "text": "Presentar consignas concisas y resaltar los datos y las acciones fundamentales de cada actividad."
+  "profile": "general",
+  "text": "Graduar la ayuda y la complejidad de las actividades, retirando progresivamente los apoyos conforme se consoliden los aprendizajes."
  },
  {
-  "id": "m3",
-  "sectionId": 1,
-  "profile": "tdah",
-  "text": "Alternar periodos de concentración con actividades prácticas o manipulativas y pausas de movimiento acordadas."
- },
- {
-  "id": "m21",
+  "id": "m32",
   "sectionId": 2,
-  "profile": "tdah",
-  "text": "Acompañar la explicación oral con un esquema visible y ejemplos resueltos que puedan consultarse durante el trabajo."
+  "profile": "general",
+  "text": "Facilitar explicaciones breves, ejemplos y resúmenes en formatos complementarios, accesibles también fuera de la explicación inicial."
  },
  {
-  "id": "m22",
-  "sectionId": 2,
-  "profile": "tdah",
-  "text": "Asegurar que la consigna se ha recibido y pedir que se explique qué hay que hacer antes de comenzar."
- },
- {
-  "id": "m33",
+  "id": "m42",
   "sectionId": 3,
-  "profile": "tdah",
-  "text": "Emplear una planificación visual de la sesión y un temporizador para anticipar la duración de las tareas."
+  "profile": "general",
+  "text": "Utilizar materiales visuales, manipulativos o digitales seleccionados por su utilidad para el aprendizaje y ofrecer alternativa impresa cuando sea necesaria."
  },
  {
-  "id": "m34",
-  "sectionId": 3,
-  "profile": "tdah",
-  "text": "Utilizar listas breves para revisar el material necesario, los pasos realizados y la entrega de las actividades."
- },
- {
-  "id": "m43",
+  "id": "m51",
   "sectionId": 4,
-  "profile": "tdah",
-  "text": "Acordar una ubicación que facilite la atención y el apoyo del docente, reduciendo las distracciones sin aislar del grupo."
+  "profile": "general",
+  "text": "Alternar trabajo individual, parejas y grupos flexibles dentro del aula, con tiempos de ayuda y revisión ajustados a las necesidades detectadas."
  },
  {
-  "id": "m44",
-  "sectionId": 4,
-  "profile": "tdah",
-  "text": "Ajustar los tiempos de trabajo y prever descansos breves cuando sean necesarios para mantener la participación."
- },
- {
-  "id": "m52",
+  "id": "m65",
   "sectionId": 5,
-  "profile": "tdah",
-  "text": "Distribuir las pruebas en bloques claramente diferenciados y permitir su realización en varios momentos cuando se haya acordado."
+  "profile": "general",
+  "text": "Combinar pruebas, producciones y registros de observación vinculados a los criterios de evaluación, adaptando sus condiciones de realización."
  },
  {
-  "id": "m53",
+  "id": "ngenerals5i2",
   "sectionId": 5,
-  "profile": "tdah",
-  "text": "Verificar la comprensión de las instrucciones y recordar la revisión de las respuestas, sin orientar hacia su solución."
- },
- {
-  "id": "m4",
-  "sectionId": 1,
-  "profile": "dea_lectura",
-  "text": "Simplificar la estructura de los enunciados y acompañarlos de apoyos gráficos, conservando la información y la exigencia del aprendizaje."
- },
- {
-  "id": "m5",
-  "sectionId": 1,
-  "profile": "dea_lectura",
-  "text": "Combinar respuestas breves, esquemas y actividades de elección cuando permitan trabajar el aprendizaje previsto sin una carga lectora innecesaria."
- },
- {
-  "id": "m23",
-  "sectionId": 2,
-  "profile": "dea_lectura",
-  "text": "Ofrecer la lectura oral o mediante texto a voz de las instrucciones cuando la lectura autónoma no sea el aprendizaje que se trabaja."
- },
- {
-  "id": "m24",
-  "sectionId": 2,
-  "profile": "dea_lectura",
-  "text": "Preparar documentos con letra legible, separación suficiente y una distribución visual que facilite localizar la información."
- },
- {
-  "id": "m35",
-  "sectionId": 3,
-  "profile": "dea_lectura",
-  "text": "Facilitar guías de lectura, textos digitales accesibles y herramientas de lectura en voz alta cuando resulten útiles."
- },
- {
-  "id": "m45",
-  "sectionId": 4,
-  "profile": "dea_lectura",
-  "text": "Prever tiempo adicional para leer y responder, ajustado a la necesidad observada y a los acuerdos del equipo docente."
- },
- {
-  "id": "m54",
-  "sectionId": 5,
-  "profile": "dea_lectura",
-  "text": "Asegurar la comprensión de los enunciados mediante su lectura o aclaración, sin resolver la tarea ni alterar el criterio evaluado."
- },
- {
-  "id": "m55",
-  "sectionId": 5,
-  "profile": "dea_lectura",
-  "text": "Recoger evidencias orales o digitales equivalentes cuando el criterio no exija específicamente lectura o producción escrita."
- },
- {
-  "id": "m6",
-  "sectionId": 1,
-  "profile": "dea_escritura",
-  "text": "Reducir la copia mecánica y admitir esquemas o escritura digital cuando sean formas válidas de realizar la actividad."
- },
- {
-  "id": "m7",
-  "sectionId": 1,
-  "profile": "dea_escritura",
-  "text": "Proporcionar modelos y plantillas parcialmente completadas que ayuden a planificar y organizar la respuesta escrita."
- },
- {
-  "id": "m25",
-  "sectionId": 2,
-  "profile": "dea_escritura",
-  "text": "Entregar los apuntes esenciales y las instrucciones por escrito o en formato digital para que la copia no impida seguir la explicación."
- },
- {
-  "id": "ndea_escrituras3i1",
-  "sectionId": 3,
-  "profile": "dea_escritura",
-  "text": "Disponer de plantillas de organización del texto y, cuando proceda, teclado o herramientas de dictado compatibles con la tarea."
- },
- {
-  "id": "m46",
-  "sectionId": 4,
-  "profile": "dea_escritura",
-  "text": "Prever tiempo para anotar y revisar las tareas y organizar apoyos puntuales entre iguales que favorezcan progresivamente la autonomía."
- },
- {
-  "id": "m56",
-  "sectionId": 5,
-  "profile": "dea_escritura",
-  "text": "Diferenciar las dificultades de grafía o transcripción del aprendizaje objeto de evaluación y aplicar los ajustes acordados sin excluir aspectos que formen parte del criterio."
- },
- {
-  "id": "m57",
-  "sectionId": 5,
-  "profile": "dea_escritura",
-  "text": "Combinar preguntas de completar, asociación o elección con respuestas abiertas cuando permitan obtener evidencias suficientes del mismo criterio de evaluación."
- },
- {
-  "id": "m8",
-  "sectionId": 1,
-  "profile": "dea_calculo",
-  "text": "Trabajar las relaciones numéricas y los problemas con situaciones cercanas, representaciones gráficas y materiales de apoyo."
- },
- {
-  "id": "m9",
-  "sectionId": 1,
-  "profile": "dea_calculo",
-  "text": "Secuenciar los procedimientos de cálculo y resolución de problemas con ejemplos guiados y una retirada gradual de las ayudas."
- },
- {
-  "id": "ndea_calculos2i1",
-  "sectionId": 2,
-  "profile": "dea_calculo",
-  "text": "Presentar de forma diferenciada los datos, las unidades y la pregunta del problema, explicando el vocabulario y los símbolos que generen dificultad."
- },
- {
-  "id": "m36",
-  "sectionId": 3,
-  "profile": "dea_calculo",
-  "text": "Facilitar tablas, formularios y calculadora cuando su uso sea compatible con el aprendizaje que se pretende desarrollar."
- },
- {
-  "id": "m37",
-  "sectionId": 3,
-  "profile": "dea_calculo",
-  "text": "Usar rectas numéricas, representaciones de cantidades y plantillas que ayuden a colocar y comprender las operaciones."
- },
- {
-  "id": "ndea_calculos4i1",
-  "sectionId": 4,
-  "profile": "dea_calculo",
-  "text": "Reservar más tiempo para organizar los procedimientos y alternar práctica individual con apoyo en parejas o grupos flexibles."
- },
- {
-  "id": "m58",
-  "sectionId": 5,
-  "profile": "dea_calculo",
-  "text": "Permitir calculadora o apoyos numéricos cuando el criterio evaluado no requiera precisamente demostrar el cálculo que esos recursos realizan."
- },
- {
-  "id": "m10",
-  "sectionId": 1,
-  "profile": "nee_intelectual",
-  "text": "Graduar la dificultad de las actividades y conectarlas con situaciones funcionales, manteniendo el referente curricular que corresponda al alumno o alumna."
- },
- {
-  "id": "m11",
-  "sectionId": 1,
-  "profile": "nee_intelectual",
-  "text": "Mostrar un ejemplo antes de la práctica y ofrecer instrucciones concretas con apoyos que se retiren a medida que aumente la autonomía."
- },
- {
-  "id": "nnee_intelectuals2i1",
-  "sectionId": 2,
-  "profile": "nee_intelectual",
-  "text": "Ofrecer la información en pasos cortos, con lenguaje claro, ejemplos concretos y comprobaciones frecuentes de comprensión."
- },
- {
-  "id": "m38",
-  "sectionId": 3,
-  "profile": "nee_intelectual",
-  "text": "Utilizar materiales visuales o manipulativos y fichas de diseño claro, adecuados a la edad del alumnado de Secundaria."
- },
- {
-  "id": "nnee_intelectuals4i1",
-  "sectionId": 4,
-  "profile": "nee_intelectual",
-  "text": "Distribuir el trabajo en tiempos asumibles y favorecer la participación en el grupo ordinario, coordinando los apoyos previstos con Orientación y, en su caso, con PT."
- },
- {
-  "id": "m59",
-  "sectionId": 5,
-  "profile": "nee_intelectual",
-  "text": "Ajustar el formato, la extensión y los apoyos de las pruebas; si existe una ACS, aplicar sus referentes sin confundirla con las medidas del PRA."
- },
- {
-  "id": "m60",
-  "sectionId": 5,
-  "profile": "nee_intelectual",
-  "text": "Combinar observación de tareas, producciones prácticas y un portafolio con registros vinculados a los criterios de evaluación aplicables."
- },
- {
-  "id": "m12",
-  "sectionId": 1,
-  "profile": "nee_tea",
-  "text": "Explicitar qué se debe hacer, en qué orden y cuándo se considera terminada la actividad mediante una guía ajustada a sus necesidades."
- },
- {
-  "id": "m13",
-  "sectionId": 1,
-  "profile": "nee_tea",
-  "text": "Redactar consignas directas y explicar los dobles sentidos o las expresiones figuradas que puedan dificultar la comprensión."
- },
- {
-  "id": "m28",
-  "sectionId": 2,
-  "profile": "nee_tea",
-  "text": "Apoyar la explicación con secuencias visuales, ejemplos y, cuando proceda, pictogramas adaptados a la edad y al sistema de comunicación utilizado."
- },
- {
-  "id": "m29",
-  "sectionId": 2,
-  "profile": "nee_tea",
-  "text": "Anticipar los cambios de actividad y las variaciones relevantes de la rutina, indicando qué se mantiene y qué va a cambiar."
- },
- {
-  "id": "nnee_teas3i1",
-  "sectionId": 3,
-  "profile": "nee_tea",
-  "text": "Facilitar una agenda de trabajo, listas de pasos y modelos de producto final coherentes con los apoyos acordados con Orientación."
- },
- {
-  "id": "m47",
-  "sectionId": 4,
-  "profile": "nee_tea",
-  "text": "Organizar un entorno predecible y reducir las barreras sensoriales, anticipando los agrupamientos y facilitando la participación con iguales."
- },
- {
-  "id": "m61",
-  "sectionId": 5,
-  "profile": "nee_tea",
-  "text": "Presentar pruebas con estructura estable, instrucciones explícitas y preguntas sin ambigüedad, permitiendo los apoyos de acceso que se hayan acordado."
- },
- {
-  "id": "m14",
-  "sectionId": 1,
-  "profile": "alcain",
-  "text": "Proponer retos e investigaciones de mayor profundidad que exijan justificar decisiones y explorar distintas vías de solución."
- },
- {
-  "id": "m15",
-  "sectionId": 1,
-  "profile": "alcain",
-  "text": "Diseñar proyectos interdisciplinares y productos originales que enriquezcan los saberes del curso sin adelantar contenidos de forma automática ni repetir más ejercicios del mismo tipo."
- },
- {
-  "id": "nalcains2i1",
-  "sectionId": 2,
-  "profile": "alcain",
-  "text": "Orientar la consulta de fuentes variadas y de mayor complejidad, enseñando a contrastar su fiabilidad y a sintetizar la información."
- },
- {
-  "id": "m39",
-  "sectionId": 3,
-  "profile": "alcain",
-  "text": "Ofrecer lecturas de ampliación, simuladores y recursos de investigación ajustados al interés y al nivel de profundización del proyecto."
- },
- {
-  "id": "m49",
-  "sectionId": 4,
-  "profile": "alcain",
-  "text": "Reservar tiempos de trabajo autónomo y agrupamientos flexibles por intereses, con seguimiento docente y participación equilibrada en el equipo."
- },
- {
-  "id": "m62",
-  "sectionId": 5,
-  "profile": "alcain",
-  "text": "Valorar los proyectos con rúbricas vinculadas a los criterios ordinarios e incorporar autoevaluación y coevaluación; la profundidad y la creatividad se valorarán cuando sean pertinentes a esos criterios."
- },
- {
-  "id": "m16",
-  "sectionId": 1,
-  "profile": "ecophe",
-  "text": "Incorporar tareas de acogida académica y actividades graduadas según los aprendizajes previos, con vocabulario de apoyo cuando sea necesario."
- },
- {
-  "id": "necophes1i2",
-  "sectionId": 1,
-  "profile": "ecophe",
-  "text": "Trabajar los aprendizajes que falten para seguir las materias a partir de la evaluación inicial, sin atribuir las dificultades automáticamente al desconocimiento del español."
- },
- {
-  "id": "m30",
-  "sectionId": 2,
-  "profile": "ecophe",
-  "text": "Explicar las rutinas y las consignas del aula con ejemplos e información visual y facilitar apoyos lingüísticos solo cuando se necesiten."
- },
- {
-  "id": "necophes3i1",
-  "sectionId": 3,
-  "profile": "ecophe",
-  "text": "Preparar una guía de inicio con materiales esenciales de cada materia y recursos de refuerzo ajustados a su escolarización previa."
- },
- {
-  "id": "necophes4i1",
-  "sectionId": 4,
-  "profile": "ecophe",
-  "text": "Organizar un compañero o compañera de acogida y apoyos temporales en el grupo ordinario, coordinados con tutoría y Orientación."
- },
- {
-  "id": "necophes5i1",
-  "sectionId": 5,
-  "profile": "ecophe",
-  "text": "Recoger evidencias iniciales y continuas mediante tareas prácticas y pruebas accesibles que permitan distinguir los aprendizajes de las barreras de adaptación al nuevo contexto."
+  "profile": "general",
+  "text": "Ofrecer retroalimentación sobre los errores y nuevas oportunidades de demostrar los aprendizajes, revisando la utilidad de las medidas a lo largo del curso."
  },
  {
   "id": "m17",
@@ -670,310 +367,880 @@ const MEASURES = [
   "text": "Recoger de forma continuada evidencias de los criterios de evaluación mediante tareas, proyectos y pruebas, dando retroalimentación concreta sobre los avances y las dificultades."
  },
  {
-  "id": "m20",
-  "sectionId": 1,
-  "profile": "general",
-  "text": "Combinar práctica guiada, situaciones de aplicación y tareas de síntesis sobre los aprendizajes en los que se hayan detectado dificultades."
- },
- {
-  "id": "ngenerals1i2",
-  "sectionId": 1,
-  "profile": "general",
-  "text": "Graduar la ayuda y la complejidad de las actividades, retirando progresivamente los apoyos conforme se consoliden los aprendizajes."
- },
- {
-  "id": "m32",
-  "sectionId": 2,
-  "profile": "general",
-  "text": "Facilitar explicaciones breves, ejemplos y resúmenes en formatos complementarios, accesibles también fuera de la explicación inicial."
- },
- {
-  "id": "m42",
-  "sectionId": 3,
-  "profile": "general",
-  "text": "Utilizar materiales visuales, manipulativos o digitales seleccionados por su utilidad para el aprendizaje y ofrecer alternativa impresa cuando sea necesaria."
- },
- {
-  "id": "m51",
-  "sectionId": 4,
-  "profile": "general",
-  "text": "Alternar trabajo individual, parejas y grupos flexibles dentro del aula, con tiempos de ayuda y revisión ajustados a las necesidades detectadas."
- },
- {
-  "id": "m65",
-  "sectionId": 5,
-  "profile": "general",
-  "text": "Combinar pruebas, producciones y registros de observación vinculados a los criterios de evaluación, adaptando sus condiciones de realización."
- },
- {
-  "id": "ngenerals5i2",
-  "sectionId": 5,
-  "profile": "general",
-  "text": "Ofrecer retroalimentación sobre los errores y nuevas oportunidades de demostrar los aprendizajes, revisando la utilidad de las medidas a lo largo del curso."
- },
- {
-  "id": "nlenguajes1i1",
-  "sectionId": 1,
-  "profile": "lenguaje",
-  "text": "Secuenciar las actividades de comprensión y expresión con modelos de respuesta y práctica del vocabulario de la materia en contextos significativos."
- },
- {
-  "id": "nlenguajes1i2",
-  "sectionId": 1,
-  "profile": "lenguaje",
-  "text": "Proporcionar apoyos para planificar las intervenciones y los textos, aumentando gradualmente la autonomía comunicativa."
- },
- {
-  "id": "nlenguajes2i1",
-  "sectionId": 2,
-  "profile": "lenguaje",
-  "text": "Dar una instrucción cada vez, apoyar el mensaje con ejemplos y comprobar la comprensión mediante una reformulación o una acción."
- },
- {
-  "id": "nlenguajes3i1",
-  "sectionId": 3,
-  "profile": "lenguaje",
-  "text": "Facilitar organizadores del discurso, bancos de palabras y los apoyos de comunicación previstos con Orientación y, en su caso, con Audición y Lenguaje."
- },
- {
-  "id": "nlenguajes4i1",
-  "sectionId": 4,
-  "profile": "lenguaje",
-  "text": "Prever tiempo de preparación y respuesta, con oportunidades de participación en parejas o grupos pequeños antes de intervenir ante toda la clase."
- },
- {
-  "id": "nlenguajes5i1",
-  "sectionId": 5,
-  "profile": "lenguaje",
-  "text": "Ajustar las consignas y el canal de respuesta sin cambiar el criterio evaluado, diferenciando la dificultad comunicativa de los aprendizajes de la materia cuando no sean el mismo objeto de evaluación."
- },
- {
-  "id": "nespanols1i1",
-  "sectionId": 1,
-  "profile": "espanol",
-  "text": "Integrar el aprendizaje del español de uso académico en tareas concretas de las materias, con vocabulario y estructuras de respuesta graduadas."
- },
- {
-  "id": "nespanols1i2",
-  "sectionId": 1,
-  "profile": "espanol",
-  "text": "Permitir apoyos en la lengua de origen y representaciones no verbales durante el proceso de acceso a los aprendizajes, cuando sean compatibles con la tarea."
- },
- {
-  "id": "nespanols2i1",
-  "sectionId": 2,
-  "profile": "espanol",
-  "text": "Acompañar las explicaciones con demostraciones, imágenes y comprobaciones de comprensión, evitando equiparar el nivel de español con la capacidad de aprendizaje."
- },
- {
-  "id": "nespanols3i1",
-  "sectionId": 3,
-  "profile": "espanol",
-  "text": "Utilizar glosarios visuales o bilingües y recursos de español como lengua de aprendizaje, coordinados con ATAL cuando ese apoyo esté disponible y proceda."
- },
- {
-  "id": "nespanols4i1",
-  "sectionId": 4,
-  "profile": "espanol",
-  "text": "Facilitar interacción con compañeros de referencia y apoyos lingüísticos temporales, manteniendo la participación en el grupo ordinario."
- },
- {
-  "id": "nespanols5i1",
-  "sectionId": 5,
-  "profile": "espanol",
-  "text": "Recoger evidencias mediante tareas prácticas, apoyos visuales y consignas accesibles, sin eximir de los aprendizajes lingüísticos cuando formen parte del criterio evaluado."
- },
- {
-  "id": "ndesventajas1i1",
-  "sectionId": 1,
-  "profile": "desventaja",
-  "text": "Priorizar un itinerario de tareas esenciales con acompañamiento en el aula, ajustado a las dificultades de aprendizaje y a las oportunidades reales de realización."
- },
- {
-  "id": "ndesventajas1i2",
-  "sectionId": 1,
-  "profile": "desventaja",
-  "text": "Contextualizar las actividades en situaciones cercanas y recuperar los aprendizajes que hayan quedado interrumpidos, sin acumular tareas de forma indiscriminada."
- },
- {
-  "id": "ndesventajas2i1",
-  "sectionId": 2,
-  "profile": "desventaja",
-  "text": "Dar instrucciones y materiales por vías accesibles para el alumnado, evitando que la consulta del aula virtual sea la única forma de seguir el plan."
- },
- {
-  "id": "ndesventajas3i1",
-  "sectionId": 3,
-  "profile": "desventaja",
-  "text": "Asegurar materiales de trabajo sin coste y alternativas impresas o recursos del centro cuando existan barreras de acceso digital o de disponibilidad de material."
- },
- {
-  "id": "ndesventajas4i1",
-  "sectionId": 4,
-  "profile": "desventaja",
-  "text": "Reservar tiempo de realización y revisión en el centro y acordar plazos realistas, con coordinación tutorial y apoyos educativos disponibles."
- },
- {
-  "id": "ndesventajas5i1",
-  "sectionId": 5,
-  "profile": "desventaja",
-  "text": "Obtener evidencias variadas durante el trabajo en el aula y facilitar entregas o pruebas accesibles, valorando los criterios de aprendizaje sin convertir la falta de recursos en una penalización académica."
- },
- {
-  "id": "nmotivacions1i1",
-  "sectionId": 1,
-  "profile": "motivacion",
-  "text": "Ofrecer tareas de investigación o creación elegidas entre varias propuestas relacionadas con los intereses del alumnado y los saberes de la materia."
- },
- {
-  "id": "nmotivacions1i2",
-  "sectionId": 1,
-  "profile": "motivacion",
-  "text": "Sustituir parte de la práctica ya dominada por desafíos de ampliación que requieran aplicar, relacionar y justificar lo aprendido."
- },
- {
-  "id": "nmotivacions2i1",
-  "sectionId": 2,
-  "profile": "motivacion",
-  "text": "Orientar la búsqueda y el contraste de información con preguntas de investigación y criterios para seleccionar fuentes adecuadas."
- },
- {
-  "id": "nmotivacions3i1",
-  "sectionId": 3,
-  "profile": "motivacion",
-  "text": "Facilitar lecturas, herramientas de creación y recursos de experimentación del centro acordes con el proyecto elegido."
- },
- {
-  "id": "nmotivacions4i1",
-  "sectionId": 4,
-  "profile": "motivacion",
-  "text": "Planificar momentos de trabajo autónomo y colaboración por intereses dentro del horario lectivo, con hitos de revisión y una carga asumible."
- },
- {
-  "id": "nmotivacions5i1",
-  "sectionId": 5,
-  "profile": "motivacion",
-  "text": "Evaluar el proyecto con evidencias y rúbricas referidas a los criterios ordinarios, incluyendo reflexión sobre el proceso sin crear criterios de calificación nuevos por participar en la profundización."
- },
- {
-  "id": "v5neaes1",
+  "id": "pt7_neae_1_1",
   "sectionId": 1,
   "profile": "neae",
-  "text": "Graduar las actividades según las necesidades identificadas, manteniendo el referente curricular aplicable y retirando las ayudas conforme aumente la autonomía."
+  "text": "Partir de una tarea breve y alcanzable, mostrar cómo se inicia y graduar las ayudas hasta que pueda continuar con mayor autonomía."
  },
  {
-  "id": "v5neaes2",
+  "id": "pt7_neae_1_2",
+  "sectionId": 1,
+  "profile": "neae",
+  "text": "Enseñar de forma explícita a planificar, realizar y revisar la actividad; reconocer avances concretos y ofrecer opciones de participación acordes con sus fortalezas."
+ },
+ {
+  "id": "pt7_neae_1_3",
+  "sectionId": 1,
+  "profile": "neae",
+  "text": "Practicar cómo pedir ayuda, esperar un turno y expresar un desacuerdo, con pocas normas claras, modelado y una respuesta calmada y coherente del equipo docente."
+ },
+ {
+  "id": "pt7_neae_2_1",
   "sectionId": 2,
   "profile": "neae",
-  "text": "Presentar las explicaciones y las consignas con formatos accesibles y comprobar la comprensión conforme a las necesidades de apoyo identificadas."
+  "text": "Dar instrucciones breves mediante palabras, ejemplos y apoyos accesibles, y pedir que muestre el primer paso para comprobar la comprensión."
  },
  {
-  "id": "v5neaes3",
+  "id": "pt7_neae_2_2",
+  "sectionId": 2,
+  "profile": "neae",
+  "text": "Anticipar las actividades y sus cambios, reformulando la explicación cuando sea necesario y dejando tiempo suficiente para procesar y responder."
+ },
+ {
+  "id": "pt7_neae_3_1",
   "sectionId": 3,
   "profile": "neae",
-  "text": "Facilitar los materiales y las herramientas de apoyo previstos por el equipo docente y Orientación para acceder al aprendizaje de la materia."
+  "text": "Seleccionar con PT y Orientación modelos, listas de pasos, organizadores y herramientas de acceso adecuados a la edad y a las necesidades identificadas."
  },
  {
-  "id": "v5neaes4",
+  "id": "pt7_neae_4_1",
   "sectionId": 4,
   "profile": "neae",
-  "text": "Organizar los tiempos, los agrupamientos y los apoyos para favorecer la participación en el grupo ordinario y revisar periódicamente su utilidad."
+  "text": "Ajustar el tiempo y la cantidad de práctica repetitiva sin reducir el aprendizaje previsto; acordar pausas y un modo de pedir ayuda o recuperar la calma antes de retomar la tarea."
  },
  {
-  "id": "v5neaes5",
+  "id": "pt7_neae_4_2",
+  "sectionId": 4,
+  "profile": "neae",
+  "text": "Facilitar la participación en el grupo ordinario con compañeros de referencia y funciones claras, retirando el acompañamiento conforme aumente la autonomía."
+ },
+ {
+  "id": "pt7_neae_5_1",
   "sectionId": 5,
   "profile": "neae",
-  "text": "Adaptar las condiciones y los formatos de evaluación para obtener evidencias de los criterios aplicables, conforme a las medidas educativas establecidas."
+  "text": "Ofrecer condiciones y formatos accesibles para demostrar los criterios aplicables, diferenciando el aprendizaje evaluado de las barreras de atención, comunicación, escritura o acceso que no formen parte de ese criterio."
  },
  {
-  "id": "v5nee_auditivas1",
+  "id": "pt7_neae_5_2",
+  "sectionId": 5,
+  "profile": "neae",
+  "text": "Registrar muestras de aprendizaje y el nivel de ayuda necesario, revisar qué apoyos funcionan y acordar ajustes con el equipo docente, PT y Orientación."
+ },
+ {
+  "id": "pt7_neae_5_3",
+  "sectionId": 5,
+  "profile": "neae",
+  "text": "Anticipar el formato de las pruebas y ensayar su organización; ante un bloqueo, ofrecer una pausa y acompañar la vuelta a la tarea sin dar pistas sobre las respuestas."
+ },
+ {
+  "id": "pt7_dea_lectura_1_1",
+  "sectionId": 1,
+  "profile": "dea_lectura",
+  "text": "Trabajar textos breves y significativos por fragmentos, activando lo que sabe del tema y guiando la identificación de ideas y relaciones."
+ },
+ {
+  "id": "pt7_dea_lectura_1_2",
+  "sectionId": 1,
+  "profile": "dea_lectura",
+  "text": "Coordinar con PT la práctica explícita de las habilidades lectoras que necesite, con textos adecuados a su edad y sin exigir lectura pública imprevista."
+ },
+ {
+  "id": "pt7_dea_lectura_1_3",
+  "sectionId": 1,
+  "profile": "dea_lectura",
+  "text": "Reducir ejercicios equivalentes cuando ya aporten evidencias suficientes, manteniendo la exigencia de comprensión y razonamiento."
+ },
+ {
+  "id": "pt7_dea_lectura_2_1",
+  "sectionId": 2,
+  "profile": "dea_lectura",
+  "text": "Anticipar el vocabulario clave y presentar textos con párrafos cortos, subtítulos, letra legible y separación suficiente."
+ },
+ {
+  "id": "pt7_dea_lectura_2_2",
+  "sectionId": 2,
+  "profile": "dea_lectura",
+  "text": "Ofrecer texto acompañado de audio o lectura de las consignas cuando la decodificación autónoma no sea el aprendizaje evaluado, comprobando su comprensión."
+ },
+ {
+  "id": "pt7_dea_lectura_3_1",
+  "sectionId": 3,
+  "profile": "dea_lectura",
+  "text": "Facilitar guía o ventana de lectura, texto a voz, audiotextos y organizadores para resumir o relacionar ideas, según los apoyos que le resulten útiles."
+ },
+ {
+  "id": "pt7_dea_lectura_4_1",
+  "sectionId": 4,
+  "profile": "dea_lectura",
+  "text": "Ajustar el tiempo de lectura y respuesta e introducir pausas ante la fatiga, sin comparar públicamente su velocidad con la de otros compañeros."
+ },
+ {
+  "id": "pt7_dea_lectura_4_2",
+  "sectionId": 4,
+  "profile": "dea_lectura",
+  "text": "Preparar las lecturas con el docente o en pareja antes de una participación acordada ante el grupo, reforzando los progresos concretos."
+ },
+ {
+  "id": "pt7_dea_lectura_5_1",
+  "sectionId": 5,
+  "profile": "dea_lectura",
+  "text": "Aclarar los enunciados sin proporcionar la solución y admitir respuestas orales, grabadas o mediante esquemas cuando permitan demostrar el mismo criterio."
+ },
+ {
+  "id": "pt7_dea_lectura_5_2",
+  "sectionId": 5,
+  "profile": "dea_lectura",
+  "text": "Distinguir el contenido y el razonamiento de los errores de lectura u ortografía cuando estos no formen parte del criterio; si se evalúa lectura, recoger también una muestra lectora con los apoyos de acceso adecuados."
+ },
+ {
+  "id": "pt7_tdah_1_1",
+  "sectionId": 1,
+  "profile": "tdah",
+  "text": "Dividir la actividad en tramos breves con una meta visible y acompañar el primer paso cuando le cueste iniciar, retirando después esa ayuda."
+ },
+ {
+  "id": "pt7_tdah_1_2",
+  "sectionId": 1,
+  "profile": "tdah",
+  "text": "Practicar una secuencia de autoinstrucciones para detenerse, pensar, actuar y revisar, con retroalimentación inmediata sobre el paso realizado."
+ },
+ {
+  "id": "pt7_tdah_1_3",
+  "sectionId": 1,
+  "profile": "tdah",
+  "text": "Seleccionar práctica suficiente para el aprendizaje previsto y alternarla con tareas activas, evitando que la copia extensa concentre la mayor parte del esfuerzo."
+ },
+ {
+  "id": "pt7_tdah_2_1",
+  "sectionId": 2,
+  "profile": "tdah",
+  "text": "Presentar una consigna cada vez, destacar la acción y los datos esenciales y mantener los pasos por escrito mientras se realiza la tarea."
+ },
+ {
+  "id": "pt7_tdah_2_2",
+  "sectionId": 2,
+  "profile": "tdah",
+  "text": "Comprobar que puede explicar o mostrar qué debe hacer y acordar una señal discreta para recuperar la atención sin interrumpir su participación."
+ },
+ {
+  "id": "pt7_tdah_3_1",
+  "sectionId": 3,
+  "profile": "tdah",
+  "text": "Utilizar agenda visual, temporizador y listas breves para preparar el material, ordenar los pasos y comprobar la entrega."
+ },
+ {
+  "id": "pt7_tdah_3_2",
+  "sectionId": 3,
+  "profile": "tdah",
+  "text": "Organizar carpetas y materiales con ubicaciones estables y códigos sencillos, enseñando una rutina breve de revisión al inicio y al final de la sesión."
+ },
+ {
+  "id": "pt7_tdah_4_1",
+  "sectionId": 4,
+  "profile": "tdah",
+  "text": "Acordar una ubicación con pocas distracciones y apoyo docente cercano, manteniendo la relación con el grupo."
+ },
+ {
+  "id": "pt7_tdah_4_2",
+  "sectionId": 4,
+  "profile": "tdah",
+  "text": "Prever pausas de movimiento funcional y avisos antes de las transiciones; ajustar los bloques de trabajo y los tiempos de revisión según su respuesta."
+ },
+ {
+  "id": "pt7_tdah_5_1",
+  "sectionId": 5,
+  "profile": "tdah",
+  "text": "Presentar las pruebas en bloques de diseño despejado, con instrucciones breves, pausas y tiempo ajustado cuando lo necesite."
+ },
+ {
+  "id": "pt7_tdah_5_2",
+  "sectionId": 5,
+  "profile": "tdah",
+  "text": "Recordar la revisión mediante una lista de comprobación y combinar evidencias orales, prácticas o escritas compatibles con el criterio, sin convertir la rapidez o la distracción en criterios adicionales."
+ },
+ {
+  "id": "pt7_dea_escritura_1_1",
+  "sectionId": 1,
+  "profile": "dea_escritura",
+  "text": "Reducir la copia mecánica y entregar un esquema base para que pueda atender a la explicación y dedicar el esfuerzo a elaborar sus ideas."
+ },
+ {
+  "id": "pt7_dea_escritura_1_2",
+  "sectionId": 1,
+  "profile": "dea_escritura",
+  "text": "Planificar la respuesta oralmente o con un organizador antes de escribir; trabajar la escritura funcional en periodos breves según las orientaciones de PT."
+ },
+ {
+  "id": "pt7_dea_escritura_2_1",
+  "sectionId": 2,
+  "profile": "dea_escritura",
+  "text": "Facilitar los apuntes esenciales y modelos de respuesta organizados, con los pasos y la distribución del espacio claramente señalados."
+ },
+ {
+  "id": "pt7_dea_escritura_3_1",
+  "sectionId": 3,
+  "profile": "dea_escritura",
+  "text": "Ofrecer pauta o cuadrícula adaptada, márgenes visibles y útiles de escritura que faciliten el manejo, seleccionados según la necesidad observada."
+ },
+ {
+  "id": "pt7_dea_escritura_3_2",
+  "sectionId": 3,
+  "profile": "dea_escritura",
+  "text": "Permitir teclado o dictado por voz cuando resulte adecuado, enseñando a revisar el texto producido con estas herramientas."
+ },
+ {
+  "id": "pt7_dea_escritura_4_1",
+  "sectionId": 4,
+  "profile": "dea_escritura",
+  "text": "Ajustar el tiempo y la extensión de la escritura manual e introducir descansos si aparece fatiga, manteniendo oportunidades de trabajo autónomo con el grupo."
+ },
+ {
+  "id": "pt7_dea_escritura_5_1",
+  "sectionId": 5,
+  "profile": "dea_escritura",
+  "text": "Admitir respuesta oral, digital o mediante un producto práctico cuando la escritura manual no sea el objeto del criterio evaluado."
+ },
+ {
+  "id": "pt7_dea_escritura_5_2",
+  "sectionId": 5,
+  "profile": "dea_escritura",
+  "text": "Valorar las ideas y los aprendizajes de la materia diferenciándolos de la legibilidad o la velocidad del trazo; si se evalúa escritura, recoger una muestra ajustada sin que la copia innecesaria impida completarla."
+ },
+ {
+  "id": "pt7_dea_ortografia_1_1",
+  "sectionId": 1,
+  "profile": "dea_ortografia",
+  "text": "Enseñar de forma explícita una regla o patrón ortográfico cada vez, con ejemplos y práctica breve en textos significativos para su edad."
+ },
+ {
+  "id": "pt7_dea_ortografia_1_2",
+  "sectionId": 1,
+  "profile": "dea_ortografia",
+  "text": "Guiar la revisión de un objetivo concreto y la corrección razonada de sus propios errores, evitando la copia repetitiva de palabras como única práctica."
+ },
+ {
+  "id": "pt7_dea_ortografia_2_1",
+  "sectionId": 2,
+  "profile": "dea_ortografia",
+  "text": "Presentar la regla con ejemplos, contraejemplos y palabras de referencia, destacando visualmente el aspecto que se está trabajando."
+ },
+ {
+  "id": "pt7_dea_ortografia_3_1",
+  "sectionId": 3,
+  "profile": "dea_ortografia",
+  "text": "Construir un diccionario personal de dudas con la forma correcta, la regla y un ejemplo, y facilitar tarjetas o listas de revisión."
+ },
+ {
+  "id": "pt7_dea_ortografia_3_2",
+  "sectionId": 3,
+  "profile": "dea_ortografia",
+  "text": "Utilizar el corrector digital como apoyo para reflexionar y revisar cuando sea compatible con el propósito de la actividad."
+ },
+ {
+  "id": "pt7_dea_ortografia_4_1",
+  "sectionId": 4,
+  "profile": "dea_ortografia",
+  "text": "Reservar tiempo para revisar una parte del texto y contrastar dudas con apoyo docente o en pareja, aumentando progresivamente la revisión autónoma."
+ },
+ {
+  "id": "pt7_dea_ortografia_5_1",
+  "sectionId": 5,
+  "profile": "dea_ortografia",
+  "text": "Diferenciar las evidencias de contenido de las de ortografía, aplicando los criterios correspondientes a cada aprendizaje sin penalizaciones indiscriminadas."
+ },
+ {
+  "id": "pt7_dea_ortografia_5_2",
+  "sectionId": 5,
+  "profile": "dea_ortografia",
+  "text": "Cuando se evalúe ortografía, utilizar producciones breves y revisiones guiadas que permitan comprobar los patrones trabajados, sin que una herramienta automática resuelva aquello que debe demostrar."
+ },
+ {
+  "id": "pt7_dea_calculo_1_1",
+  "sectionId": 1,
+  "profile": "dea_calculo",
+  "text": "Construir el significado numérico pasando de la manipulación a la representación gráfica y después al símbolo, conectando las tres formas."
+ },
+ {
+  "id": "pt7_dea_calculo_1_2",
+  "sectionId": 1,
+  "profile": "dea_calculo",
+  "text": "Modelar procedimientos en pasos cortos, verbalizando las decisiones y practicando la estimación y la comprobación del resultado."
+ },
+ {
+  "id": "pt7_dea_calculo_1_3",
+  "sectionId": 1,
+  "profile": "dea_calculo",
+  "text": "Proponer práctica breve y frecuente en problemas cercanos, con menos operaciones repetitivas y más explicación de las relaciones numéricas."
+ },
+ {
+  "id": "pt7_dea_calculo_2_1",
+  "sectionId": 2,
+  "profile": "dea_calculo",
+  "text": "Diferenciar datos, unidades y pregunta del problema y explicar los signos y el vocabulario antes de resolverlo."
+ },
+ {
+  "id": "pt7_dea_calculo_2_2",
+  "sectionId": 2,
+  "profile": "dea_calculo",
+  "text": "Mostrar el valor posicional y la colocación de los números con apoyos visuales claros, evitando acumular varios procedimientos nuevos a la vez."
+ },
+ {
+  "id": "pt7_dea_calculo_3_1",
+  "sectionId": 3,
+  "profile": "dea_calculo",
+  "text": "Facilitar recta numérica, material de base diez, regletas, cuadrículas y tarjetas de pasos adecuados a los contenidos de Secundaria."
+ },
+ {
+  "id": "pt7_dea_calculo_3_2",
+  "sectionId": 3,
+  "profile": "dea_calculo",
+  "text": "Ofrecer tablas de referencia y calculadora cuando apoyen el razonamiento sin sustituir el cálculo que se pretende aprender o evaluar."
+ },
+ {
+  "id": "pt7_dea_calculo_4_1",
+  "sectionId": 4,
+  "profile": "dea_calculo",
+  "text": "Dar tiempo para representar, resolver y explicar, alternando práctica autónoma con ayuda en pareja y evitando tareas sistemáticamente centradas en competir por velocidad."
+ },
+ {
+  "id": "pt7_dea_calculo_5_1",
+  "sectionId": 5,
+  "profile": "dea_calculo",
+  "text": "Recoger el procedimiento y la justificación mediante explicación oral, representación, manipulación o respuesta escrita, además del resultado final."
+ },
+ {
+  "id": "pt7_dea_calculo_5_2",
+  "sectionId": 5,
+  "profile": "dea_calculo",
+  "text": "Permitir apoyos numéricos o calculadora solo cuando sean compatibles con el criterio, y analizar los errores para decidir el siguiente paso de aprendizaje."
+ },
+ {
+  "id": "pt7_lenguaje_1_1",
+  "sectionId": 1,
+  "profile": "lenguaje",
+  "text": "Practicar el vocabulario de la materia en contextos significativos y modelar cómo ordenar una explicación mediante ejemplos y esquemas."
+ },
+ {
+  "id": "pt7_lenguaje_1_2",
+  "sectionId": 1,
+  "profile": "lenguaje",
+  "text": "Ofrecer comienzos de frase y guiones para expresar ideas; ampliar su mensaje con un modelo correcto sin completar sistemáticamente sus respuestas."
+ },
+ {
+  "id": "pt7_lenguaje_2_1",
+  "sectionId": 2,
+  "profile": "lenguaje",
+  "text": "Dar una instrucción cada vez, con lenguaje concreto, imagen o gesto cuando ayude, conservando la complejidad del contenido que debe aprender."
+ },
+ {
+  "id": "pt7_lenguaje_2_2",
+  "sectionId": 2,
+  "profile": "lenguaje",
+  "text": "Comprobar la comprensión pidiendo que muestre la acción o reformule el paso, y reformular el mensaje cuando no lo comprenda."
+ },
+ {
+  "id": "pt7_lenguaje_3_1",
+  "sectionId": 3,
+  "profile": "lenguaje",
+  "text": "Utilizar bancos de palabras, mapas semánticos y guiones para describir, narrar o argumentar, coordinados con PT y, cuando proceda, con Audición y Lenguaje."
+ },
+ {
+  "id": "pt7_lenguaje_3_2",
+  "sectionId": 3,
+  "profile": "lenguaje",
+  "text": "Facilitar los apoyos de comunicación indicados y modelos de respuesta que pueda consultar sin depender de memorizar toda la explicación oral."
+ },
+ {
+  "id": "pt7_lenguaje_4_1",
+  "sectionId": 4,
+  "profile": "lenguaje",
+  "text": "Dejar tiempo de procesamiento y respuesta sin interrumpir ni interpretar la demora como desconocimiento; preparar intervenciones en pareja o grupo pequeño."
+ },
+ {
+  "id": "pt7_lenguaje_5_1",
+  "sectionId": 5,
+  "profile": "lenguaje",
+  "text": "Ajustar la complejidad lingüística de las consignas y permitir apoyos visuales o distintos canales de respuesta cuando no alteren el criterio."
+ },
+ {
+  "id": "pt7_lenguaje_5_2",
+  "sectionId": 5,
+  "profile": "lenguaje",
+  "text": "Diferenciar los conocimientos de la materia de las dificultades expresivas cuando el lenguaje no sea el aprendizaje evaluado, recogiendo muestras específicas cuando sí lo sea."
+ },
+ {
+  "id": "pt7_nee_tea_1_1",
+  "sectionId": 1,
+  "profile": "nee_tea",
+  "text": "Explicitar dónde se trabaja, qué debe hacer, cuánto trabajo se espera, cómo sabrá que ha terminado y qué actividad viene después."
+ },
+ {
+  "id": "pt7_nee_tea_1_2",
+  "sectionId": 1,
+  "profile": "nee_tea",
+  "text": "Aprovechar sus intereses para conectar con los aprendizajes y ofrecer pequeñas elecciones dentro de una secuencia predecible."
+ },
+ {
+  "id": "pt7_nee_tea_1_3",
+  "sectionId": 1,
+  "profile": "nee_tea",
+  "text": "Enseñar de forma directa los turnos, las peticiones de ayuda y las funciones en las tareas compartidas, con práctica guiada en situaciones reales."
+ },
+ {
+  "id": "pt7_nee_tea_2_1",
+  "sectionId": 2,
+  "profile": "nee_tea",
+  "text": "Utilizar lenguaje concreto y apoyos visuales ajustados a su edad, explicando los dobles sentidos y las reglas que no estén formuladas de manera explícita."
+ },
+ {
+  "id": "pt7_nee_tea_2_2",
+  "sectionId": 2,
+  "profile": "nee_tea",
+  "text": "Anticipar cambios de actividad, espacio o personas con información sobre lo que ocurrirá y los apoyos disponibles."
+ },
+ {
+  "id": "pt7_nee_tea_3_1",
+  "sectionId": 3,
+  "profile": "nee_tea",
+  "text": "Facilitar agenda visual, panel de primero y después, modelos del producto final y guiones sociales personalizados cuando sean útiles."
+ },
+ {
+  "id": "pt7_nee_tea_3_2",
+  "sectionId": 3,
+  "profile": "nee_tea",
+  "text": "Disponer de los apoyos de comunicación y regulación sensorial acordados, respetando las estrategias de autorregulación que no causen daño."
+ },
+ {
+  "id": "pt7_nee_tea_4_1",
+  "sectionId": 4,
+  "profile": "nee_tea",
+  "text": "Reducir la sobrecarga de ruido, luz y proximidad y acordar pausas o un espacio tranquilo con una pauta de retorno a la actividad."
+ },
+ {
+  "id": "pt7_nee_tea_4_2",
+  "sectionId": 4,
+  "profile": "nee_tea",
+  "text": "Organizar grupos pequeños con roles y turnos explícitos, sin exigir contacto ocular como condición para escuchar o participar."
+ },
+ {
+  "id": "pt7_nee_tea_5_1",
+  "sectionId": 5,
+  "profile": "nee_tea",
+  "text": "Presentar pruebas con estructura conocida, preguntas sin ambigüedad y los apoyos de acceso acordados, anticipando su organización."
+ },
+ {
+  "id": "pt7_nee_tea_5_2",
+  "sectionId": 5,
+  "profile": "nee_tea",
+  "text": "Dar tiempo de procesamiento y permitir un canal de respuesta compatible con el criterio; valorar el aprendizaje sin confundirlo con las particularidades de interacción social."
+ },
+ {
+  "id": "pt7_desventaja_1_1",
+  "sectionId": 1,
+  "profile": "desventaja",
+  "text": "Priorizar aprendizajes y metas cercanas que pueda trabajar con acompañamiento en el aula, incorporando sus intereses y experiencias."
+ },
+ {
+  "id": "pt7_desventaja_1_2",
+  "sectionId": 1,
+  "profile": "desventaja",
+  "text": "Recuperar los aprendizajes interrumpidos con tareas graduadas, feedback concreto y oportunidades de éxito, evitando acumular trabajo sin apoyo."
+ },
+ {
+  "id": "pt7_desventaja_2_1",
+  "sectionId": 2,
+  "profile": "desventaja",
+  "text": "Facilitar instrucciones, calendario y materiales por canales realmente accesibles, con explicación directa y alternativa al acceso exclusivo al aula virtual."
+ },
+ {
+  "id": "pt7_desventaja_3_1",
+  "sectionId": 3,
+  "profile": "desventaja",
+  "text": "Asegurar materiales sin coste y préstamo de recursos del centro, con alternativas impresas cuando no disponga de dispositivos o conexión."
+ },
+ {
+  "id": "pt7_desventaja_4_1",
+  "sectionId": 4,
+  "profile": "desventaja",
+  "text": "Reservar tiempo de realización en el centro, acordar plazos viables y organizar colaboración entre iguales sin exponer públicamente sus circunstancias."
+ },
+ {
+  "id": "pt7_desventaja_4_2",
+  "sectionId": 4,
+  "profile": "desventaja",
+  "text": "Coordinar con tutoría el seguimiento de la participación y la recuperación del trabajo tras ausencias, con una carga priorizada y asumible."
+ },
+ {
+  "id": "pt7_desventaja_5_1",
+  "sectionId": 5,
+  "profile": "desventaja",
+  "text": "Recoger evidencias durante la actividad de aula y ofrecer vías de entrega accesibles para que la disponibilidad de recursos no condicione la valoración del aprendizaje."
+ },
+ {
+  "id": "pt7_desventaja_5_2",
+  "sectionId": 5,
+  "profile": "desventaja",
+  "text": "Revisar el progreso y la utilidad de los apoyos con el equipo docente, valorando los criterios de la materia sin convertir las circunstancias familiares o económicas en penalizaciones."
+ },
+ {
+  "id": "pt7_nee_intelectual_1_1",
+  "sectionId": 1,
+  "profile": "nee_intelectual",
+  "text": "Partir de lo que realiza con y sin ayuda y descomponer las actividades en pasos que pueda practicar con éxito."
+ },
+ {
+  "id": "pt7_nee_intelectual_1_2",
+  "sectionId": 1,
+  "profile": "nee_intelectual",
+  "text": "Modelar la acción, realizarla juntos y pasar a la práctica con ayuda decreciente, evitando resolver sistemáticamente la tarea en su lugar."
+ },
+ {
+  "id": "pt7_nee_intelectual_1_3",
+  "sectionId": 1,
+  "profile": "nee_intelectual",
+  "text": "Conectar los aprendizajes con situaciones funcionales adecuadas a su edad y repetirlos con variaciones para aplicarlos en contextos distintos."
+ },
+ {
+  "id": "pt7_nee_intelectual_2_1",
+  "sectionId": 2,
+  "profile": "nee_intelectual",
+  "text": "Presentar información concreta en cantidades asumibles y comprobar cada paso mediante una acción, con apoyos visuales accesibles."
+ },
+ {
+  "id": "pt7_nee_intelectual_3_1",
+  "sectionId": 3,
+  "profile": "nee_intelectual",
+  "text": "Utilizar objetos reales, materiales manipulativos, secuencias visuales y modelos de tareas de Secundaria, sin infantilizar su presentación."
+ },
+ {
+  "id": "pt7_nee_intelectual_3_2",
+  "sectionId": 3,
+  "profile": "nee_intelectual",
+  "text": "Facilitar listas de autonomía, apoyos de comunicación y herramientas funcionales acordadas con PT y Orientación."
+ },
+ {
+  "id": "pt7_nee_intelectual_4_1",
+  "sectionId": 4,
+  "profile": "nee_intelectual",
+  "text": "Reservar tiempo suficiente y oportunidades de elección, con participación real en grupos heterogéneos y apoyos que se revisen y retiren gradualmente."
+ },
+ {
+  "id": "pt7_nee_intelectual_5_1",
+  "sectionId": 5,
+  "profile": "nee_intelectual",
+  "text": "Recoger evidencias prácticas, orales, visuales o escritas referidas al currículo aplicable y registrar también el nivel de ayuda y la generalización del aprendizaje."
+ },
+ {
+  "id": "pt7_nee_intelectual_5_2",
+  "sectionId": 5,
+  "profile": "nee_intelectual",
+  "text": "Combinar observación sistemática, producciones y portafolio con pruebas accesibles, coordinando los referentes de evaluación establecidos para el alumnado."
+ },
+ {
+  "id": "pt7_ecophe_1_1",
+  "sectionId": 1,
+  "profile": "ecophe",
+  "text": "Partir de una valoración de su escolarización y conocimientos previos para proponer un itinerario de incorporación, sin equiparar llegada reciente con desconocimiento del español."
+ },
+ {
+  "id": "pt7_ecophe_1_2",
+  "sectionId": 1,
+  "profile": "ecophe",
+  "text": "Conectar las tareas con sus experiencias y dar oportunidades de aportar conocimientos y referentes culturales propios."
+ },
+ {
+  "id": "pt7_ecophe_2_1",
+  "sectionId": 2,
+  "profile": "ecophe",
+  "text": "Explicar las rutinas del centro y las consignas de las materias con demostraciones, ejemplos y apoyos lingüísticos solo cuando los necesite."
+ },
+ {
+  "id": "pt7_ecophe_3_1",
+  "sectionId": 3,
+  "profile": "ecophe",
+  "text": "Facilitar una guía de acogida académica, materiales esenciales y, si procede, glosarios visuales o bilingües como puente hacia el vocabulario de la materia."
+ },
+ {
+  "id": "pt7_ecophe_4_1",
+  "sectionId": 4,
+  "profile": "ecophe",
+  "text": "Acordar compañeros de acogida y roles sencillos para participar en el grupo, con tiempo de adaptación y seguimiento desde tutoría."
+ },
+ {
+  "id": "pt7_ecophe_4_2",
+  "sectionId": 4,
+  "profile": "ecophe",
+  "text": "Coordinar las demandas de las materias y las comunicaciones con la familia por vías comprensibles, evitando acumular tareas previas sin priorización."
+ },
+ {
+  "id": "pt7_ecophe_5_1",
+  "sectionId": 5,
+  "profile": "ecophe",
+  "text": "Usar tareas prácticas y formatos accesibles para distinguir los aprendizajes previos de las barreras lingüísticas o de adaptación al nuevo contexto."
+ },
+ {
+  "id": "pt7_ecophe_5_2",
+  "sectionId": 5,
+  "profile": "ecophe",
+  "text": "Revisar progresivamente los apoyos y recoger nuevas evidencias de los criterios aplicables conforme se incorpore a las rutinas del curso."
+ },
+ {
+  "id": "pt7_espanol_1_1",
+  "sectionId": 1,
+  "profile": "espanol",
+  "text": "Enseñar vocabulario y estructuras académicas dentro de las tareas de cada materia, con modelos de frase y práctica gradual."
+ },
+ {
+  "id": "pt7_espanol_1_2",
+  "sectionId": 1,
+  "profile": "espanol",
+  "text": "Permitir la lengua de origen como apoyo para comprender, planificar o contrastar ideas, cuando sea compatible con el aprendizaje previsto."
+ },
+ {
+  "id": "pt7_espanol_2_1",
+  "sectionId": 2,
+  "profile": "espanol",
+  "text": "Combinar lenguaje claro con imágenes, demostraciones y gestos; comprobar la comprensión mediante una acción y ampliar gradualmente el apoyo lingüístico."
+ },
+ {
+  "id": "pt7_espanol_2_2",
+  "sectionId": 2,
+  "profile": "espanol",
+  "text": "Anticipar las palabras clave y activar sus conocimientos del tema sin interpretar la dificultad para expresarse en español como falta de capacidad."
+ },
+ {
+  "id": "pt7_espanol_3_1",
+  "sectionId": 3,
+  "profile": "espanol",
+  "text": "Facilitar glosarios visuales o bilingües, diccionarios y guiones de respuesta adecuados a su edad, en coordinación con ATAL cuando proceda y esté disponible."
+ },
+ {
+  "id": "pt7_espanol_4_1",
+  "sectionId": 4,
+  "profile": "espanol",
+  "text": "Dar tiempo de preparación y oportunidades de interacción en parejas o grupos pequeños, con compañeros de referencia y participación oral sin exposición imprevista."
+ },
+ {
+  "id": "pt7_espanol_5_1",
+  "sectionId": 5,
+  "profile": "espanol",
+  "text": "Recoger evidencias mediante demostraciones, esquemas, tareas prácticas o respuestas apoyadas cuando el criterio lo permita."
+ },
+ {
+  "id": "pt7_espanol_5_2",
+  "sectionId": 5,
+  "profile": "espanol",
+  "text": "Diferenciar el dominio del contenido del nivel de español cuando corresponda, manteniendo la evaluación de los aprendizajes lingüísticos que formen parte del criterio."
+ },
+ {
+  "id": "pt7_nee_auditiva_1_1",
   "sectionId": 1,
   "profile": "nee_auditiva",
-  "text": "Proponer actividades con instrucciones escritas y apoyos visuales que permitan participar sin depender exclusivamente de la información oral."
+  "text": "Acompañar las actividades orales de instrucciones escritas o visuales y asegurar que pueda acceder a la información y asumir un papel activo en el grupo."
  },
  {
-  "id": "v5nee_auditivas2",
+  "id": "pt7_nee_auditiva_2_1",
   "sectionId": 2,
   "profile": "nee_auditiva",
-  "text": "Asegurar la visibilidad del rostro del docente y de los compañeros, respetar los turnos de intervención y ofrecer subtítulos o transcripciones de los materiales audiovisuales."
+  "text": "Captar su atención antes de hablar, mantener el rostro visible y respetar los turnos, comprobando que ha recibido la información sin presuponer lectura labial."
  },
  {
-  "id": "v5nee_auditivas3",
+  "id": "pt7_nee_auditiva_2_2",
+  "sectionId": 2,
+  "profile": "nee_auditiva",
+  "text": "Facilitar subtítulos, transcripciones y apuntes de los contenidos esenciales, respetando el sistema de comunicación que utilice."
+ },
+ {
+  "id": "pt7_nee_auditiva_3_1",
   "sectionId": 3,
   "profile": "nee_auditiva",
-  "text": "Utilizar los dispositivos y apoyos de comunicación indicados para el alumnado, junto con materiales visuales y documentos escritos accesibles."
+  "text": "Utilizar los productos de apoyo auditivo o de comunicación prescritos y acordados con los especialistas, junto a materiales visuales accesibles."
  },
  {
-  "id": "v5nee_auditivas4",
+  "id": "pt7_nee_auditiva_4_1",
   "sectionId": 4,
   "profile": "nee_auditiva",
-  "text": "Ajustar la ubicación y reducir el ruido de fondo, facilitando la comunicación y la participación en los agrupamientos del aula."
+  "text": "Acordar la ubicación según sus necesidades, reducir ruido de fondo y facilitar la visibilidad de quienes intervienen; prever pausas ante fatiga comunicativa."
  },
  {
-  "id": "v5nee_auditivas5",
+  "id": "pt7_nee_auditiva_5_1",
   "sectionId": 5,
   "profile": "nee_auditiva",
-  "text": "Ofrecer consignas accesibles y un medio de respuesta ajustado a las necesidades de comunicación, manteniendo los criterios de evaluación aplicables."
+  "text": "Presentar consignas accesibles y un canal de respuesta acorde con sus necesidades, manteniendo los criterios aplicables y los apoyos habituales."
  },
  {
-  "id": "v5nee_visuals1",
+  "id": "pt7_nee_auditiva_5_2",
+  "sectionId": 5,
+  "profile": "nee_auditiva",
+  "text": "Comprobar el acceso a los materiales de las pruebas sin sustituir el aprendizaje que se pretende evaluar."
+ },
+ {
+  "id": "pt7_nee_visual_1_1",
   "sectionId": 1,
   "profile": "nee_visual",
-  "text": "Proponer actividades que permitan acceder a la información gráfica mediante descripciones, materiales manipulativos o alternativas accesibles según la necesidad visual."
+  "text": "Convertir gráficos, tablas y actividades visuales en descripciones, representaciones táctiles o alternativas accesibles que permitan trabajar el mismo aprendizaje."
  },
  {
-  "id": "v5nee_visuals2",
+  "id": "pt7_nee_visual_2_1",
   "sectionId": 2,
   "profile": "nee_visual",
-  "text": "Facilitar los textos y las imágenes en el formato indicado, con ampliación, contraste, descripción verbal o acceso digital compatible con los apoyos utilizados."
+  "text": "Verbalizar lo que se señala o escribe y facilitar los materiales con antelación en el formato de acceso indicado para el alumnado."
  },
  {
-  "id": "v5nee_visuals3",
+  "id": "pt7_nee_visual_2_2",
+  "sectionId": 2,
+  "profile": "nee_visual",
+  "text": "Utilizar ampliación y contraste cuando resulten útiles para su visión funcional, o descripción, braille y acceso digital compatible cuando los necesite."
+ },
+ {
+  "id": "pt7_nee_visual_3_1",
   "sectionId": 3,
   "profile": "nee_visual",
-  "text": "Disponer de documentos digitales accesibles y de los materiales o productos de apoyo previstos para el alumno o alumna."
+  "text": "Disponer de documentos accesibles, materiales manipulativos o en relieve y los productos de apoyo indicados, evitando imágenes sin descripción y documentos que solo sean una fotografía del texto."
  },
  {
-  "id": "v5nee_visuals4",
+  "id": "pt7_nee_visual_4_1",
   "sectionId": 4,
   "profile": "nee_visual",
-  "text": "Acordar una ubicación, iluminación y organización del espacio que faciliten el acceso a los materiales y los desplazamientos, ajustando los tiempos cuando se necesite."
+  "text": "Mantener itinerarios despejados, avisar de cambios en el espacio y acordar iluminación y ubicación con el alumnado; ajustar los tiempos de exploración y respuesta."
  },
  {
-  "id": "v5nee_visuals5",
+  "id": "pt7_nee_visual_5_1",
   "sectionId": 5,
   "profile": "nee_visual",
-  "text": "Adaptar la presentación de las pruebas y las representaciones gráficas para evaluar los mismos aprendizajes sin que una barrera visual condicione el resultado."
+  "text": "Preparar pruebas compatibles con su medio habitual de acceso y respuesta y adaptar las representaciones gráficas con suficiente antelación."
  },
  {
-  "id": "v5nee_fisicas1",
+  "id": "pt7_nee_visual_5_2",
+  "sectionId": 5,
+  "profile": "nee_visual",
+  "text": "Evaluar los mismos aprendizajes sin que la percepción visual o la velocidad de exploración sean una barrera ajena al criterio."
+ },
+ {
+  "id": "pt7_nee_fisica_1_1",
   "sectionId": 1,
   "profile": "nee_fisica",
-  "text": "Adaptar la forma de manipular los materiales y realizar las tareas a las posibilidades de participación del alumnado, manteniendo su finalidad curricular."
+  "text": "Ajustar la manipulación y la ejecución de las tareas a sus posibilidades de acceso, conservando su finalidad y permitiéndole tomar decisiones sobre cómo participar."
  },
  {
-  "id": "v5nee_fisicas2",
+  "id": "pt7_nee_fisica_2_1",
   "sectionId": 2,
   "profile": "nee_fisica",
-  "text": "Proporcionar materiales e instrucciones en soportes que puedan consultarse y manejarse mediante los dispositivos de acceso utilizados por el alumnado."
+  "text": "Ofrecer las explicaciones y los materiales en soportes que pueda consultar con autonomía mediante sus dispositivos habituales, reduciendo la copia y los cambios de soporte innecesarios."
  },
  {
-  "id": "v5nee_fisicas3",
+  "id": "pt7_nee_fisica_3_1",
   "sectionId": 3,
   "profile": "nee_fisica",
-  "text": "Facilitar los dispositivos de entrada, ayudas técnicas y materiales adaptados establecidos para favorecer la autonomía en el trabajo."
+  "text": "Facilitar mobiliario, útiles y dispositivos de entrada adaptados según las indicaciones de los profesionales de referencia y comprobar su compatibilidad con los recursos de la materia."
  },
  {
-  "id": "v5nee_fisicas4",
+  "id": "pt7_nee_fisica_4_1",
   "sectionId": 4,
   "profile": "nee_fisica",
-  "text": "Organizar un espacio accesible y tiempos ajustados a la realización y los desplazamientos, coordinando los apoyos necesarios sin aislar del grupo."
+  "text": "Organizar espacios y recorridos accesibles y prever tiempo para desplazamientos, manejo de materiales y descansos ante fatiga."
  },
  {
-  "id": "v5nee_fisicas5",
+  "id": "pt7_nee_fisica_4_2",
+  "sectionId": 4,
+  "profile": "nee_fisica",
+  "text": "Asignar funciones reales en las actividades cooperativas y acordar cuándo necesita ayuda, evitando sustituir acciones que puede realizar por sí mismo."
+ },
+ {
+  "id": "pt7_nee_fisica_5_1",
   "sectionId": 5,
   "profile": "nee_fisica",
-  "text": "Permitir medios alternativos de respuesta y ajustar el tiempo de realización cuando sea necesario para demostrar los criterios evaluados sin interferencias de la limitación motora."
+  "text": "Permitir respuesta digital, oral u otro medio accesible cuando el criterio no exija la ejecución motora que supone una barrera."
+ },
+ {
+  "id": "pt7_nee_fisica_5_2",
+  "sectionId": 5,
+  "profile": "nee_fisica",
+  "text": "Ajustar el tiempo y las condiciones de realización y recoger evidencias del aprendizaje sin atribuir al conocimiento las dificultades de movimiento o transcripción."
+ },
+ {
+  "id": "pt7_motivacion_1_1",
+  "sectionId": 1,
+  "profile": "motivacion",
+  "text": "Ofrecer opciones de investigación y creación conectadas con sus intereses y sustituir la práctica ya dominada por tareas de aplicación y profundización."
+ },
+ {
+  "id": "pt7_motivacion_1_2",
+  "sectionId": 1,
+  "profile": "motivacion",
+  "text": "Proponer retos abiertos con un producto útil, promoviendo la planificación, la revisión y la explicación de las decisiones sin añadir ejercicios repetitivos como ampliación."
+ },
+ {
+  "id": "pt7_motivacion_2_1",
+  "sectionId": 2,
+  "profile": "motivacion",
+  "text": "Guiar la búsqueda de información mediante preguntas y criterios para contrastar fuentes, ofreciendo textos, ejemplos y recursos con distintos niveles de complejidad."
+ },
+ {
+  "id": "pt7_motivacion_3_1",
+  "sectionId": 3,
+  "profile": "motivacion",
+  "text": "Facilitar un menú de proyectos, lecturas y herramientas de experimentación o creación del centro, con modelos de planificación y un diario del proceso."
+ },
+ {
+  "id": "pt7_motivacion_4_1",
+  "sectionId": 4,
+  "profile": "motivacion",
+  "text": "Acordar metas y revisiones dentro del horario lectivo, combinando autonomía y colaboración por intereses con una carga asumible y apoyo docente disponible."
+ },
+ {
+  "id": "pt7_motivacion_5_1",
+  "sectionId": 5,
+  "profile": "motivacion",
+  "text": "Valorar proyectos y explicaciones con rúbricas referidas a los criterios ordinarios, incorporando reflexión sobre los intentos, los cambios y los aprendizajes logrados."
+ },
+ {
+  "id": "pt7_alcain_1_1",
+  "sectionId": 1,
+  "profile": "alcain",
+  "text": "Comprobar qué aprendizajes domina y sustituir parte de la práctica repetitiva por retos de mayor profundidad, sin añadir una carga extra por terminar antes."
+ },
+ {
+  "id": "pt7_alcain_1_2",
+  "sectionId": 1,
+  "profile": "alcain",
+  "text": "Proponer problemas abiertos con distintas soluciones y proyectos que conecten disciplinas, permitiendo elegir preguntas, procedimientos y productos."
+ },
+ {
+  "id": "pt7_alcain_1_3",
+  "sectionId": 1,
+  "profile": "alcain",
+  "text": "Enseñar a investigar, contrastar argumentos y revisar intentos, acompañando el perfeccionismo y la tolerancia al error sin presuponer autonomía completa."
+ },
+ {
+  "id": "pt7_alcain_2_1",
+  "sectionId": 2,
+  "profile": "alcain",
+  "text": "Ofrecer fuentes y formatos con distintos niveles de profundidad y orientar la selección, el contraste de fiabilidad y la síntesis de lo consultado."
+ },
+ {
+  "id": "pt7_alcain_3_1",
+  "sectionId": 3,
+  "profile": "alcain",
+  "text": "Facilitar un menú de desafíos, contratos de aprendizaje y herramientas de investigación, simulación o creación vinculadas a sus intereses y al proyecto."
+ },
+ {
+  "id": "pt7_alcain_4_1",
+  "sectionId": 4,
+  "profile": "alcain",
+  "text": "Combinar trabajo autónomo y agrupamientos flexibles por intereses, con hitos de seguimiento y colaboración equilibrada sin convertirlo en ayudante permanente del docente."
+ },
+ {
+  "id": "pt7_alcain_5_1",
+  "sectionId": 5,
+  "profile": "alcain",
+  "text": "Acordar rúbricas vinculadas a los criterios ordinarios y recoger proyectos, explicaciones, borradores y diario de aprendizaje para valorar el proceso y el resultado."
+ },
+ {
+  "id": "pt7_alcain_5_2",
+  "sectionId": 5,
+  "profile": "alcain",
+  "text": "Incorporar autoevaluación y revisión de decisiones; valorar creatividad, profundidad y argumentación cuando sean pertinentes al criterio, sin modificar los referentes ordinarios por participar en profundización."
  }
 ];
 const PROGRAMMES = [
