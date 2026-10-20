@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2f5870">
+<meta name="description" content="Generador de medidas para los programas de refuerzo del aprendizaje. IES Sancti Petri, San Fernando. Selecciona, personaliza y copia tus medidas para Séneca.">
+<title>PRA y profundización · IES Sancti Petri</title>
+<style>
+:root{--navy:#2f5870;--navy-dark:#254a61;--cyan:#2387a4;--cyan-dark:#1b718b;--pale:#edf5f9;--light:#dceaf3;--line:#c8d4db;--ink:#263944;--muted:#526b79;--bg:#f4f6f7;--danger:#993d32}
+[hidden]{display:none!important}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:16px}body{margin:0;background:#fff;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.45}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}a{color:#205e80;text-underline-offset:3px}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #2387a4;outline-offset:3px}input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #2387a4;outline-offset:2px}h1,h2,h3,p{margin:0}button{touch-action:manipulation}.skip{position:fixed;left:8px;top:-100px;background:#fff;padding:12px;z-index:100}.skip:focus{top:8px}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid #d6dde1}.brand{font-weight:700;color:#0878a7;font-size:20px;letter-spacing:-.03em}.brand span{color:#6b7c85;font-size:12px;font-weight:400;letter-spacing:0;display:block}.masthead-note{color:var(--muted);font-size:12px;text-align:right}.titlebar{background:var(--navy);color:#fff;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}.titlebar h1{font-size:17px;font-weight:600;letter-spacing:.025em}.titlebar .btn{background:#fff;border-color:#d5e0e6;color:#365564}.titlebar .btn:hover{background:#edf4f7}
+.app{max-width:1540px;margin:0 auto;padding:16px 18px 28px}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.btn{min-height:36px;padding:8px 12px;border:1px solid #aebfca;border-radius:3px;background:#f7fbfd;color:#365c70;font-weight:600;line-height:1.2;transition:background .12s}.btn:hover{background:#e5f1f7}.btn.primary{background:var(--cyan);color:#fff;border-color:var(--cyan-dark)}.btn.primary:hover{background:var(--cyan-dark)}.btn.small{min-height:32px;padding:6px 10px;font-size:12px}.btn.link{background:transparent;border-color:transparent;color:#3d677e;text-decoration:underline;text-underline-offset:3px}.btn.danger{color:var(--danger);background:#fff8f6;border-color:#dfbdb6}.btn.danger:hover{background:#fbe9e4}
+.panel{border:1px solid var(--line);border-radius:3px;background:#fff;box-shadow:0 1px 4px #20384612;overflow:hidden}.panel-head{padding:11px 14px;background:#eef3f6;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.panel-head h2,.panel-head h3{font-size:15px;color:#2d566e}.panel-head.blue{background:var(--light)}.panel-body{padding:14px}.help{color:var(--muted);font-size:12px;line-height:1.5;margin-top:4px}.profile-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.profile{position:relative;display:flex;align-items:center;gap:10px;min-height:54px;text-align:left;border:1px solid #adc4d1;background:#edf5f9;border-radius:3px;padding:9px 36px 9px 11px;color:#355d74;line-height:1.25;font-weight:600;font-size:13px}.profile:hover{background:#dfedf5;border-color:#7aa4bd}.profile[aria-pressed="true"]{background:#dceaf4;border-color:#1f516d;box-shadow:inset 0 0 0 1px #2d7598}.profile[aria-pressed="true"]:after{content:'✓';position:absolute;right:10px;top:50%;transform:translateY(-50%);width:18px;height:18px;display:grid;place-items:center;border-radius:50%;background:#2b5870;color:#fff;font-size:12px}.profile-symbol{flex-shrink:0;width:28px;height:28px;display:grid;place-items:center;border:1px solid #afc7d5;background:#ffffff80;border-radius:3px;font-size:13px;font-weight:700;color:var(--navy)}
+.workspace{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(340px,.88fr);gap:18px;align-items:start;margin-top:18px}.workspace>*{min-width:0}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.toolbar h2{font-size:16px;color:var(--navy)}.muted{color:var(--muted)}.count{background:#edf3f6;border:1px solid #c8d9e2;color:#355d73;padding:3px 7px;font-size:12px;border-radius:3px;white-space:nowrap}.catalogue{display:grid;gap:12px}.category{scroll-margin-top:16px}.category-head{display:flex;align-items:center;gap:10px;background:#eef3f6;padding:11px 13px;border-bottom:1px solid var(--line)}.section-number{display:grid;place-items:center;width:27px;height:27px;flex-shrink:0;background:#dceaf3;border:1px solid #b5cbd8;color:#2d566e;font-weight:700;border-radius:3px}.category-head h3{font-size:14px;color:#2d566e;flex:1}.category-tools{display:flex;gap:5px;flex-wrap:wrap;padding:8px 11px;border-bottom:1px solid #e2e9ed;background:#fafcfd}.category-tools .copy-button{margin-left:auto}.measure-list{padding:6px 10px}.measure-row{display:flex;align-items:flex-start;gap:6px;border:1px solid transparent;border-bottom-color:#edf1f3;padding:7px 4px;min-width:0}.measure-row:last-child{border-bottom-color:transparent}.measure-row.is-selected{background:#f4f9fc}.measure-label{display:flex;gap:10px;align-items:flex-start;flex:1;cursor:pointer;min-width:0;padding:3px}.measure-label input{width:17px;height:17px;flex-shrink:0;margin:1px 0 0;accent-color:var(--cyan)}.measure-copy{flex:1;font-size:13px;line-height:1.5;overflow-wrap:anywhere}.tag{display:block;color:#476b80;font-size:10px;font-weight:600;margin-top:3px}.measure-actions{display:flex;gap:2px;padding-top:1px}.icon-btn{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid transparent;background:transparent;color:#51758a;border-radius:3px}.icon-btn:hover{background:#e5f0f6;border-color:#bacfdc}.icon-btn.delete{color:#964034}.icon-btn svg{width:15px;height:15px}.empty{padding:18px 14px;color:#647985;font-size:13px;line-height:1.55}.category-foot{border-top:1px solid #e4ecef;padding:7px 13px;background:#fafcfd;font-size:11px;color:#526e7c}
+.result{position:sticky;top:12px}.result-head{background:var(--navy);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}.result-head h2{font-size:15px}.result-head .count{background:#ffffff18;border-color:#ffffff40;color:#fff}.result-toolbar{background:#edf3f6;padding:10px 12px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:7px}.result-toolbar>.primary{flex:1}.preview{padding:0 13px;max-height:calc(100vh - 215px);overflow-y:auto;scrollbar-width:thin}.output-section{padding:13px 0;border-bottom:1px solid #dce5eb}.output-section:last-child{border:0}.output-title{display:flex;align-items:flex-start;gap:7px;justify-content:space-between;margin-bottom:7px}.output-title h3{color:#315e75;font-size:12px;font-weight:700;padding-top:5px}.output-section textarea{display:block;width:100%;min-height:85px;border:1px solid #b8cbd6;border-left:3px solid #6c9cb6;background:#fcfdff;border-radius:2px;padding:10px;font-size:12px;color:#344d5c;line-height:1.6;resize:vertical;overflow-wrap:anywhere}.output-section textarea:placeholder-shown{background:#f8fafb;color:#617887}.output-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;color:#4e6c7c;margin-top:5px}.result-help{padding:11px 13px;background:#edf5f9;border-top:1px solid var(--line);font-size:12px;color:#3e6074}.local-note{margin:11px 0 0;color:#526b79;font-size:11px;line-height:1.5}.site-footer{margin-top:24px;padding:18px;background:#eef3f6;border-top:1px solid #cfd9de;color:#50636d;text-align:center;font-size:12px;line-height:1.9}.site-footer p+p{font-size:11px}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+dialog{width:min(560px,calc(100vw - 28px));padding:0;border:1px solid #abc1cf;border-radius:4px;box-shadow:0 18px 60px #18334440;color:var(--ink)}dialog::backdrop{background:#142a3d70}dialog .panel-head h2{font-size:16px}dialog form{margin:0}.modal-body{padding:18px}.field{display:grid;gap:6px;margin-bottom:16px}.field label{font-size:13px;font-weight:700;color:#3b5c6e}.field textarea,.field select{width:100%;border:1px solid #aebfca;border-radius:3px;background:#fff;color:var(--ink);padding:10px;line-height:1.55}.field textarea{min-height:130px;resize:vertical}.modal-footer{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;background:#eef3f6;border-top:1px solid var(--line)}.modal-error{color:#993d32;min-height:20px;font-size:12px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);max-width:calc(100% - 28px);padding:12px 18px;background:var(--navy-dark);border:1px solid #4c819e;border-radius:4px;color:#fff;box-shadow:0 4px 18px #18334430;z-index:30;font-size:13px;text-align:center;pointer-events:none}.toast:empty{display:none}body.modal-open{overflow:hidden}
+@media(min-width:1650px){.app{padding-top:20px}}@media(max-width:1060px){.profile-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.workspace{grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr);gap:12px}.category-tools .btn{padding:6px 8px}}@media(max-width:820px){.workspace{grid-template-columns:1fr}.result{position:static}.preview{max-height:none}.titlebar{align-items:flex-start;flex-direction:column;gap:10px}.titlebar h1{font-size:16px}.masthead-note{display:none}.profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toolbar{flex-wrap:wrap}.output-section textarea{min-height:100px}}@media(max-width:480px){.app{padding:12px 8px 20px}.masthead{padding:12px}.titlebar{padding:12px}.titlebar .actions{gap:5px}.titlebar .btn{padding:8px 10px;font-size:12px}.profile-grid{gap:7px}.profile{font-size:12px;padding-left:9px;gap:7px}.profile-symbol{display:none}.panel-body{padding:10px}.panel-head{padding:10px;align-items:flex-start}.category-head{padding:10px}.category-head h3{font-size:13px}.category-tools{gap:4px;padding:7px}.category-tools .btn{font-size:11px}.measure-copy{font-size:12px}.measure-row{gap:2px}.measure-list{padding:4px 5px}.icon-btn{width:27px;height:29px}.result-toolbar .btn{font-size:12px}.output-title .btn{white-space:nowrap}.site-footer{padding:14px 10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.programme-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.programme-toggle[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy-dark)}.programme-note{color:#486b7e;font-size:12px;line-height:1.5;margin:0 0 14px}.review-details{margin-top:12px;padding:10px 12px;border:1px solid #d5e1e8;background:#f6fafc;border-radius:3px;color:#4d6878;font-size:12px}.review-details summary{cursor:pointer;font-weight:600;color:#355e76}.review-details p{margin-top:8px;line-height:1.6}@media(max-width:480px){.programme-row .btn{width:100%;text-align:left}.programme-note{font-size:11px}}
+.workspace{display:block}.result{position:static;width:100%}.preview{max-height:none;overflow:visible;padding:0 16px}.result-toolbar>.primary{flex:0 1 auto}.output-section{padding:18px 0}.output-title{align-items:center;margin-bottom:9px}.output-title h3{font-size:14px;padding:0}.output-actions{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}.output-section textarea{min-height:150px;padding:13px;font-size:14px;line-height:1.65;background:#fff;resize:vertical}.output-meta{font-size:11px}.editor-state{color:#657c88}.editor-state.edited{color:#246883;font-weight:700}.editor-actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center}@media(max-width:560px){.output-title{align-items:flex-start;flex-direction:column;gap:8px}.output-actions{justify-content:flex-start}.preview{padding:0 10px}.output-section textarea{font-size:13px;min-height:160px}.output-meta{align-items:flex-start;flex-wrap:wrap}.result-toolbar>.primary{flex:1 1 auto}}
+.neae-details{margin-top:18px;padding-top:15px;border-top:1px solid #c8d4db}.neae-details h3{font-size:14px;color:var(--navy)}.neae-details .help{margin-bottom:12px}.profile-grid .profile{overflow-wrap:anywhere}.titlebar h1{font-size:18px;line-height:1.35}
+.titlebar{justify-content:center;align-items:center;text-align:center}.titlebar h1{width:100%;text-align:center}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header>
+  <div class="titlebar"><h1>Programas de Refuerzo del Aprendizaje y Profundización</h1></div>
+</header>
+<main class="app" id="main">
+  <section class="panel" aria-labelledby="profileTitle">
+    <div class="panel-head blue"><div><h2 id="profileTitle">Selecciona el programa y las categorías</h2><p class="help">Las propuestas aparecerán en los cinco cuadros de abajo. Puedes borrar, reescribir o añadir texto directamente en ellos.</p></div><button class="btn small" id="clearProfiles" type="button">Desmarcar categorías</button></div>
+    <div class="panel-body">
+      <div class="programme-row" id="programmePicker" role="group" aria-label="Programa educativo"><button class="btn programme-toggle" type="button" data-programme="refuerzo" aria-pressed="true">PRA · Refuerzo del aprendizaje</button><button class="btn programme-toggle" type="button" data-programme="profundizacion" aria-pressed="false">Programa de profundización</button></div>
+      <p class="programme-note" id="programmeNote"></p>
+      <div class="profile-grid" id="profiles" role="group" aria-label="Categorías del programa"></div>
+      <section id="neaeDetails" class="neae-details" aria-labelledby="neaeDetailsTitle" hidden><h3 id="neaeDetailsTitle">Concreta las necesidades de apoyo, si procede</h3><p class="help">Selecciona las que correspondan a la identificación del alumnado. Estas opciones concretan las medidas del PRA para NEAE.</p><div class="profile-grid" id="neaeProfiles" role="group" aria-label="Necesidades específicas de apoyo educativo"></div></section>
+    </div>
+  </section>
+  <div class="workspace">
+    <section class="panel result" aria-labelledby="resultTitle">
+      <div class="result-head"><h2 id="resultTitle">Texto editable para pegar en Séneca</h2></div>
+      <div class="result-toolbar"><button class="btn primary" id="copyAll" type="button">Copiar todo</button><button class="btn" id="downloadTxt" type="button">Guardar TXT</button><button class="btn" id="restoreAll" type="button">Restaurar propuestas</button></div>
+      <div class="preview" id="preview"></div>
+      <p class="result-help">Edita cada cuadro como necesites. <strong>Copiar apartado</strong> copia exactamente el texto que ves, sin el título.</p>
+    </section>
+  </div>
+  <details class="review-details"><summary>Categorías oficiales y referencias</summary><p>El artículo 33 de la Orden de ESO, en su redacción de agosto de 2026, dirige el PRA al alumnado que no promociona, al que promociona con materias anteriores no superadas, al que presenta dificultades de aprendizaje que justifican su inclusión y al alumnado con NEAE que le impiden seguir su aprendizaje con aprovechamiento. Estas son las cuatro categorías principales. El orden mostrado es orientativo de uso habitual; no representa una estadística de frecuencia del centro.</p><p>Las opciones del segundo nivel concretan las necesidades de apoyo dentro de NEAE y no constituyen tipos independientes de PRA. Se utilizan denominaciones de la LOE y del protocolo andaluz de identificación de NEAE. Las medidas se individualizan con el equipo docente, tutoría y Orientación.</p><p>La profundización se dirige al alumnado especialmente motivado para el aprendizaje y al alumnado con altas capacidades intelectuales. El refuerzo mantiene los referentes de evaluación aplicables; la profundización enriquece los saberes sin modificar los criterios ordinarios.</p><p>Referencias: <a href="https://www.juntadeandalucia.es/boja/2026/168/c03/2" target="_blank" rel="noopener noreferrer">Orden de 31 de agosto de 2026, art. 7 (modificación del art. 33 de ESO)</a>; <a href="https://www.juntadeandalucia.es/boja/2023/104/36" target="_blank" rel="noopener noreferrer">Orden de 30 de mayo de 2023 (ESO), arts. 32 y 34–36</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a71" target="_blank" rel="noopener noreferrer">LOE, art. 71.2</a>; <a href="https://blogsaverroes.juntadeandalucia.es/3033dea/aclaraciones-terminologicas/" target="_blank" rel="noopener noreferrer">EOEE de dificultades de aprendizaje de Granada: terminología del protocolo de 8 de marzo de 2017</a>.</p></details>
+  <noscript><p>Activa JavaScript en tu navegador para seleccionar y copiar las medidas.</p></noscript>
+</main>
+<footer class="site-footer"><p>Web realizada por <strong>Diego Bernal Montañés</strong> · IES Sancti Petri</p><p>Inspirada en el <a href="https://rcabreratic-comares.github.io/PRA/" target="_blank" rel="noopener noreferrer">Generador de PRA de @rcabreratic · IES Marqués de Comares</a>.</p></footer>
+<dialog id="confirmDialog" aria-labelledby="confirmTitle"><div class="panel-head blue"><h2 id="confirmTitle">Confirmar acción</h2></div><div class="modal-body"><p id="confirmMessage"></p></div><div class="modal-footer"><button class="btn" id="confirmCancel" type="button">Cancelar</button><button class="btn primary" id="confirmAccept" type="button">Continuar</button></div></dialog>
+<dialog id="manualCopy" aria-labelledby="manualCopyTitle"><div class="panel-head blue"><h2 id="manualCopyTitle">Copiar texto</h2><button class="icon-btn" type="button" data-close="manualCopy" aria-label="Cerrar">✕</button></div><div class="modal-body"><p class="help">El navegador no ha permitido copiar automáticamente. El texto está seleccionado: utiliza la opción Copiar de tu dispositivo o Ctrl+C / ⌘C.</p><div class="field"><label for="manualText">Texto seleccionado</label><textarea id="manualText" rows="9" readonly></textarea></div></div><div class="modal-footer"><button class="btn primary" type="button" data-close="manualCopy">Cerrar</button></div></dialog>
+<div class="toast" id="status" role="status" aria-live="polite" aria-atomic="true"></div>
+<script>
+'use strict';
+const SECTIONS = [
+ {
+  "id": 1,
+  "title": "Tipos de actividades y tareas",
+  "short": "Actividades y tareas"
+ },
+ {
+  "id": 2,
+  "title": "Formas de acceso a la información",
+  "short": "Acceso a la información"
+ },
+ {
+  "id": 3,
+  "title": "Recursos didácticos",
+  "short": "Recursos didácticos"
+ },
+ {
+  "id": 4,
+  "title": "Agrupamientos, distribución de espacios y tiempos",
+  "short": "Agrupamientos, espacios y tiempos"
+ },
+ {
+  "id": 5,
+  "title": "Instrumentos de evaluación",
+  "short": "Instrumentos de evaluación"
+ }
+];
+const PROFILES = [
+ {
+  "id": "general",
+  "label": "Dificultades en el aprendizaje",
+  "symbol": "✓",
+  "programme": "refuerzo",
+  "fileLabel": "Dificultades de aprendizaje",
+  "group": "main"
+ },
+ {
+  "id": "pendientes",
+  "label": "Materias no superadas de cursos anteriores",
+  "symbol": "↶",
+  "programme": "refuerzo",
+  "fileLabel": "Materias pendientes",
+  "group": "main"
+ },
+ {
+  "id": "repetidor",
+  "label": "No promoción de curso",
+  "symbol": "↻",
+  "programme": "refuerzo",
+  "fileLabel": "No promoción",
+  "group": "main"
+ },
+ {
+  "id": "neae",
+  "label": "Necesidades específicas de apoyo educativo (NEAE)",
+  "fileLabel": "NEAE",
+  "symbol": "N",
+  "programme": "refuerzo",
+  "group": "main"
+ },
+ {
+  "id": "dea_lectura",
+  "label": "Dificultad específica en el aprendizaje de la lectura (dislexia)",
+  "symbol": "Aa",
+  "programme": "refuerzo",
+  "fileLabel": "Dislexia",
+  "group": "neae-detail"
+ },
+ {
+  "id": "tdah",
+  "label": "Trastorno por déficit de atención con hiperactividad (TDAH)",
+  "symbol": "↯",
+  "programme": "refuerzo",
+  "fileLabel": "TDAH",
+  "group": "neae-detail"
+ },
+ {
+  "id": "dea_escritura",
+  "label": "Dificultad específica en el aprendizaje de la escritura (disgrafía)",
+  "symbol": "✎",
+  "programme": "refuerzo",
+  "fileLabel": "Disgrafía",
+  "group": "neae-detail"
+ },
+ {
+  "id": "dea_calculo",
+  "label": "Dificultad específica en el aprendizaje del cálculo (discalculia)",
+  "symbol": "±",
+  "programme": "refuerzo",
+  "fileLabel": "Discalculia",
+  "group": "neae-detail"
+ },
+ {
+  "id": "lenguaje",
+  "label": "Trastornos del desarrollo del lenguaje y la comunicación",
+  "symbol": "Lc",
+  "programme": "refuerzo",
+  "fileLabel": "Lenguaje y comunicación",
+  "group": "neae-detail"
+ },
+ {
+  "id": "nee_tea",
+  "label": "Trastorno del espectro autista (TEA)",
+  "symbol": "∞",
+  "programme": "refuerzo",
+  "fileLabel": "TEA",
+  "group": "neae-detail"
+ },
+ {
+  "id": "desventaja",
+  "label": "Vulnerabilidad socioeducativa",
+  "symbol": "Eq",
+  "programme": "refuerzo",
+  "fileLabel": "Vulnerabilidad socioeducativa",
+  "group": "neae-detail"
+ },
+ {
+  "id": "nee_intelectual",
+  "label": "Discapacidad intelectual",
+  "symbol": "I",
+  "programme": "refuerzo",
+  "fileLabel": "Discapacidad intelectual",
+  "group": "neae-detail"
+ },
+ {
+  "id": "ecophe",
+  "label": "Incorporación tardía al sistema educativo",
+  "symbol": "↗",
+  "programme": "refuerzo",
+  "fileLabel": "Incorporación tardía",
+  "group": "neae-detail"
+ },
+ {
+  "id": "espanol",
+  "label": "Desconocimiento grave de la lengua de aprendizaje",
+  "symbol": "Es",
+  "programme": "refuerzo",
+  "fileLabel": "Desconocimiento de la lengua de aprendizaje",
+  "group": "neae-detail"
+ },
+ {
+  "id": "nee_auditiva",
+  "label": "Discapacidad auditiva",
+  "fileLabel": "Discapacidad auditiva",
+  "symbol": "A",
+  "programme": "refuerzo",
+  "group": "neae-detail"
+ },
+ {
+  "id": "nee_visual",
+  "label": "Discapacidad visual",
+  "fileLabel": "Discapacidad visual",
+  "symbol": "V",
+  "programme": "refuerzo",
+  "group": "neae-detail"
+ },
+ {
+  "id": "nee_fisica",
+  "label": "Discapacidad física",
+  "fileLabel": "Discapacidad física",
+  "symbol": "F",
+  "programme": "refuerzo",
+  "group": "neae-detail"
+ },
+ {
+  "id": "motivacion",
+  "label": "Alumnado especialmente motivado para el aprendizaje",
+  "symbol": "+",
+  "programme": "profundizacion",
+  "fileLabel": "Especial motivación",
+  "group": "main"
+ },
+ {
+  "id": "alcain",
+  "label": "Alumnado con altas capacidades intelectuales",
+  "symbol": "✦",
+  "programme": "profundizacion",
+  "fileLabel": "Altas capacidades intelectuales",
+  "group": "main"
+ }
+];
+const MEASURES = [
+ {
+  "id": "m1",
+  "sectionId": 1,
+  "profile": "tdah",
+  "text": "Organizar las tareas en secuencias breves, con pasos explícitos y una comprobación al terminar cada tramo."
+ },
+ {
+  "id": "m2",
+  "sectionId": 1,
+  "profile": "tdah",
+  "text": "Presentar consignas concisas y resaltar los datos y las acciones fundamentales de cada actividad."
+ },
+ {
+  "id": "m3",
+  "sectionId": 1,
+  "profile": "tdah",
+  "text": "Alternar periodos de concentración con actividades prácticas o manipulativas y pausas de movimiento acordadas."
+ },
+ {
+  "id": "m21",
+  "sectionId": 2,
+  "profile": "tdah",
+  "text": "Acompañar la explicación oral con un esquema visible y ejemplos resueltos que puedan consultarse durante el trabajo."
+ },
+ {
+  "id": "m22",
+  "sectionId": 2,
+  "profile": "tdah",
+  "text": "Asegurar que la consigna se ha recibido y pedir que se explique qué hay que hacer antes de comenzar."
+ },
+ {
+  "id": "m33",
+  "sectionId": 3,
+  "profile": "tdah",
+  "text": "Emplear una planificación visual de la sesión y un temporizador para anticipar la duración de las tareas."
+ },
+ {
+  "id": "m34",
+  "sectionId": 3,
+  "profile": "tdah",
+  "text": "Utilizar listas breves para revisar el material necesario, los pasos realizados y la entrega de las actividades."
+ },
+ {
+  "id": "m43",
+  "sectionId": 4,
+  "profile": "tdah",
+  "text": "Acordar una ubicación que facilite la atención y el apoyo del docente, reduciendo las distracciones sin aislar del grupo."
+ },
+ {
+  "id": "m44",
+  "sectionId": 4,
+  "profile": "tdah",
+  "text": "Ajustar los tiempos de trabajo y prever descansos breves cuando sean necesarios para mantener la participación."
+ },
+ {
+  "id": "m52",
+  "sectionId": 5,
+  "profile": "tdah",
+  "text": "Distribuir las pruebas en bloques claramente diferenciados y permitir su realización en varios momentos cuando se haya acordado."
+ },
+ {
+  "id": "m53",
+  "sectionId": 5,
+  "profile": "tdah",
+  "text": "Verificar la comprensión de las instrucciones y recordar la revisión de las respuestas, sin orientar hacia su solución."
+ },
+ {
+  "id": "m4",
+  "sectionId": 1,
+  "profile": "dea_lectura",
+  "text": "Simplificar la estructura de los enunciados y acompañarlos de apoyos gráficos, conservando la información y la exigencia del aprendizaje."
+ },
+ {
+  "id": "m5",
+  "sectionId": 1,
+  "profile": "dea_lectura",
+  "text": "Combinar respuestas breves, esquemas y actividades de elección cuando permitan trabajar el aprendizaje previsto sin una carga lectora innecesaria."
+ },
+ {
+  "id": "m23",
+  "sectionId": 2,
+  "profile": "dea_lectura",
+  "text": "Ofrecer la lectura oral o mediante texto a voz de las instrucciones cuando la lectura autónoma no sea el aprendizaje que se trabaja."
+ },
+ {
+  "id": "m24",
+  "sectionId": 2,
+  "profile": "dea_lectura",
+  "text": "Preparar documentos con letra legible, separación suficiente y una distribución visual que facilite localizar la información."
+ },
+ {
+  "id": "m35",
+  "sectionId": 3,
+  "profile": "dea_lectura",
+  "text": "Facilitar guías de lectura, textos digitales accesibles y herramientas de lectura en voz alta cuando resulten útiles."
+ },
+ {
+  "id": "m45",
+  "sectionId": 4,
+  "profile": "dea_lectura",
+  "text": "Prever tiempo adicional para leer y responder, ajustado a la necesidad observada y a los acuerdos del equipo docente."
+ },
+ {
+  "id": "m54",
+  "sectionId": 5,
+  "profile": "dea_lectura",
+  "text": "Asegurar la comprensión de los enunciados mediante su lectura o aclaración, sin resolver la tarea ni alterar el criterio evaluado."
+ },
+ {
+  "id": "m55",
+  "sectionId": 5,
+  "profile": "dea_lectura",
+  "text": "Recoger evidencias orales o digitales equivalentes cuando el criterio no exija específicamente lectura o producción escrita."
+ },
+ {
+  "id": "m6",
+  "sectionId": 1,
+  "profile": "dea_escritura",
+  "text": "Reducir la copia mecánica y admitir esquemas o escritura digital cuando sean formas válidas de realizar la actividad."
+ },
+ {
+  "id": "m7",
+  "sectionId": 1,
+  "profile": "dea_escritura",
+  "text": "Proporcionar modelos y plantillas parcialmente completadas que ayuden a planificar y organizar la respuesta escrita."
+ },
+ {
+  "id": "m25",
+  "sectionId": 2,
+  "profile": "dea_escritura",
+  "text": "Entregar los apuntes esenciales y las instrucciones por escrito o en formato digital para que la copia no impida seguir la explicación."
+ },
+ {
+  "id": "ndea_escrituras3i1",
+  "sectionId": 3,
+  "profile": "dea_escritura",
+  "text": "Disponer de plantillas de organización del texto y, cuando proceda, teclado o herramientas de dictado compatibles con la tarea."
+ },
+ {
+  "id": "m46",
+  "sectionId": 4,
+  "profile": "dea_escritura",
+  "text": "Prever tiempo para anotar y revisar las tareas y organizar apoyos puntuales entre iguales que favorezcan progresivamente la autonomía."
+ },
+ {
+  "id": "m56",
+  "sectionId": 5,
+  "profile": "dea_escritura",
+  "text": "Diferenciar las dificultades de grafía o transcripción del aprendizaje objeto de evaluación y aplicar los ajustes acordados sin excluir aspectos que formen parte del criterio."
+ },
+ {
+  "id": "m57",
+  "sectionId": 5,
+  "profile": "dea_escritura",
+  "text": "Combinar preguntas de completar, asociación o elección con respuestas abiertas cuando permitan obtener evidencias suficientes del mismo criterio de evaluación."
+ },
+ {
+  "id": "m8",
+  "sectionId": 1,
+  "profile": "dea_calculo",
+  "text": "Trabajar las relaciones numéricas y los problemas con situaciones cercanas, representaciones gráficas y materiales de apoyo."
+ },
+ {
+  "id": "m9",
+  "sectionId": 1,
+  "profile": "dea_calculo",
+  "text": "Secuenciar los procedimientos de cálculo y resolución de problemas con ejemplos guiados y una retirada gradual de las ayudas."
+ },
+ {
+  "id": "ndea_calculos2i1",
+  "sectionId": 2,
+  "profile": "dea_calculo",
+  "text": "Presentar de forma diferenciada los datos, las unidades y la pregunta del problema, explicando el vocabulario y los símbolos que generen dificultad."
+ },
+ {
+  "id": "m36",
+  "sectionId": 3,
+  "profile": "dea_calculo",
+  "text": "Facilitar tablas, formularios y calculadora cuando su uso sea compatible con el aprendizaje que se pretende desarrollar."
+ },
+ {
+  "id": "m37",
+  "sectionId": 3,
+  "profile": "dea_calculo",
+  "text": "Usar rectas numéricas, representaciones de cantidades y plantillas que ayuden a colocar y comprender las operaciones."
+ },
+ {
+  "id": "ndea_calculos4i1",
+  "sectionId": 4,
+  "profile": "dea_calculo",
+  "text": "Reservar más tiempo para organizar los procedimientos y alternar práctica individual con apoyo en parejas o grupos flexibles."
+ },
+ {
+  "id": "m58",
+  "sectionId": 5,
+  "profile": "dea_calculo",
+  "text": "Permitir calculadora o apoyos numéricos cuando el criterio evaluado no requiera precisamente demostrar el cálculo que esos recursos realizan."
+ },
+ {
+  "id": "m10",
+  "sectionId": 1,
+  "profile": "nee_intelectual",
+  "text": "Graduar la dificultad de las actividades y conectarlas con situaciones funcionales, manteniendo el referente curricular que corresponda al alumno o alumna."
+ },
+ {
+  "id": "m11",
+  "sectionId": 1,
+  "profile": "nee_intelectual",
+  "text": "Mostrar un ejemplo antes de la práctica y ofrecer instrucciones concretas con apoyos que se retiren a medida que aumente la autonomía."
+ },
+ {
+  "id": "nnee_intelectuals2i1",
+  "sectionId": 2,
+  "profile": "nee_intelectual",
+  "text": "Ofrecer la información en pasos cortos, con lenguaje claro, ejemplos concretos y comprobaciones frecuentes de comprensión."
+ },
+ {
+  "id": "m38",
+  "sectionId": 3,
+  "profile": "nee_intelectual",
+  "text": "Utilizar materiales visuales o manipulativos y fichas de diseño claro, adecuados a la edad del alumnado de Secundaria."
+ },
+ {
+  "id": "nnee_intelectuals4i1",
+  "sectionId": 4,
+  "profile": "nee_intelectual",
+  "text": "Distribuir el trabajo en tiempos asumibles y favorecer la participación en el grupo ordinario, coordinando los apoyos previstos con Orientación y, en su caso, con PT."
+ },
+ {
+  "id": "m59",
+  "sectionId": 5,
+  "profile": "nee_intelectual",
+  "text": "Ajustar el formato, la extensión y los apoyos de las pruebas; si existe una ACS, aplicar sus referentes sin confundirla con las medidas del PRA."
+ },
+ {
+  "id": "m60",
+  "sectionId": 5,
+  "profile": "nee_intelectual",
+  "text": "Combinar observación de tareas, producciones prácticas y un portafolio con registros vinculados a los criterios de evaluación aplicables."
+ },
+ {
+  "id": "m12",
+  "sectionId": 1,
+  "profile": "nee_tea",
+  "text": "Explicitar qué se debe hacer, en qué orden y cuándo se considera terminada la actividad mediante una guía ajustada a sus necesidades."
+ },
+ {
+  "id": "m13",
+  "sectionId": 1,
+  "profile": "nee_tea",
+  "text": "Redactar consignas directas y explicar los dobles sentidos o las expresiones figuradas que puedan dificultar la comprensión."
+ },
+ {
+  "id": "m28",
+  "sectionId": 2,
+  "profile": "nee_tea",
+  "text": "Apoyar la explicación con secuencias visuales, ejemplos y, cuando proceda, pictogramas adaptados a la edad y al sistema de comunicación utilizado."
+ },
+ {
+  "id": "m29",
+  "sectionId": 2,
+  "profile": "nee_tea",
+  "text": "Anticipar los cambios de actividad y las variaciones relevantes de la rutina, indicando qué se mantiene y qué va a cambiar."
+ },
+ {
+  "id": "nnee_teas3i1",
+  "sectionId": 3,
+  "profile": "nee_tea",
+  "text": "Facilitar una agenda de trabajo, listas de pasos y modelos de producto final coherentes con los apoyos acordados con Orientación."
+ },
+ {
+  "id": "m47",
+  "sectionId": 4,
+  "profile": "nee_tea",
+  "text": "Organizar un entorno predecible y reducir las barreras sensoriales, anticipando los agrupamientos y facilitando la participación con iguales."
+ },
+ {
+  "id": "m61",
+  "sectionId": 5,
+  "profile": "nee_tea",
+  "text": "Presentar pruebas con estructura estable, instrucciones explícitas y preguntas sin ambigüedad, permitiendo los apoyos de acceso que se hayan acordado."
+ },
+ {
+  "id": "m14",
+  "sectionId": 1,
+  "profile": "alcain",
+  "text": "Proponer retos e investigaciones de mayor profundidad que exijan justificar decisiones y explorar distintas vías de solución."
+ },
+ {
+  "id": "m15",
+  "sectionId": 1,
+  "profile": "alcain",
+  "text": "Diseñar proyectos interdisciplinares y productos originales que enriquezcan los saberes del curso sin adelantar contenidos de forma automática ni repetir más ejercicios del mismo tipo."
+ },
+ {
+  "id": "nalcains2i1",
+  "sectionId": 2,
+  "profile": "alcain",
+  "text": "Orientar la consulta de fuentes variadas y de mayor complejidad, enseñando a contrastar su fiabilidad y a sintetizar la información."
+ },
+ {
+  "id": "m39",
+  "sectionId": 3,
+  "profile": "alcain",
+  "text": "Ofrecer lecturas de ampliación, simuladores y recursos de investigación ajustados al interés y al nivel de profundización del proyecto."
+ },
+ {
+  "id": "m49",
+  "sectionId": 4,
+  "profile": "alcain",
+  "text": "Reservar tiempos de trabajo autónomo y agrupamientos flexibles por intereses, con seguimiento docente y participación equilibrada en el equipo."
+ },
+ {
+  "id": "m62",
+  "sectionId": 5,
+  "profile": "alcain",
+  "text": "Valorar los proyectos con rúbricas vinculadas a los criterios ordinarios e incorporar autoevaluación y coevaluación; la profundidad y la creatividad se valorarán cuando sean pertinentes a esos criterios."
+ },
+ {
+  "id": "m16",
+  "sectionId": 1,
+  "profile": "ecophe",
+  "text": "Incorporar tareas de acogida académica y actividades graduadas según los aprendizajes previos, con vocabulario de apoyo cuando sea necesario."
+ },
+ {
+  "id": "necophes1i2",
+  "sectionId": 1,
+  "profile": "ecophe",
+  "text": "Trabajar los aprendizajes que falten para seguir las materias a partir de la evaluación inicial, sin atribuir las dificultades automáticamente al desconocimiento del español."
+ },
+ {
+  "id": "m30",
+  "sectionId": 2,
+  "profile": "ecophe",
+  "text": "Explicar las rutinas y las consignas del aula con ejemplos e información visual y facilitar apoyos lingüísticos solo cuando se necesiten."
+ },
+ {
+  "id": "necophes3i1",
+  "sectionId": 3,
+  "profile": "ecophe",
+  "text": "Preparar una guía de inicio con materiales esenciales de cada materia y recursos de refuerzo ajustados a su escolarización previa."
+ },
+ {
+  "id": "necophes4i1",
+  "sectionId": 4,
+  "profile": "ecophe",
+  "text": "Organizar un compañero o compañera de acogida y apoyos temporales en el grupo ordinario, coordinados con tutoría y Orientación."
+ },
+ {
+  "id": "necophes5i1",
+  "sectionId": 5,
+  "profile": "ecophe",
+  "text": "Recoger evidencias iniciales y continuas mediante tareas prácticas y pruebas accesibles que permitan distinguir los aprendizajes de las barreras de adaptación al nuevo contexto."
+ },
+ {
+  "id": "m17",
+  "sectionId": 1,
+  "profile": "pendientes",
+  "text": "Programar actividades de recuperación centradas en las competencias y los criterios de la materia pendiente que todavía no se hayan superado."
+ },
+ {
+  "id": "m18",
+  "sectionId": 1,
+  "profile": "pendientes",
+  "text": "Proponer tareas y pruebas de práctica coherentes con esos criterios, aprovechando las conexiones con la materia del curso actual."
+ },
+ {
+  "id": "m31",
+  "sectionId": 2,
+  "profile": "pendientes",
+  "text": "Facilitar por escrito el calendario, los aprendizajes que deben recuperarse y los procedimientos de evaluación, con acceso también desde el aula virtual."
+ },
+ {
+  "id": "m40",
+  "sectionId": 3,
+  "profile": "pendientes",
+  "text": "Ofrecer un dossier o itinerario de recuperación con ejemplos comentados y orientaciones para revisar las dificultades más frecuentes."
+ },
+ {
+  "id": "m50",
+  "sectionId": 4,
+  "profile": "pendientes",
+  "text": "Acordar entregas parciales y momentos periódicos de revisión durante el horario disponible, coordinando la carga de las distintas materias pendientes."
+ },
+ {
+  "id": "m63",
+  "sectionId": 5,
+  "profile": "pendientes",
+  "text": "Utilizar las tareas y pruebas previstas por el departamento para recoger evidencias de los criterios pendientes, sin fijar porcentajes universales por instrumento."
+ },
+ {
+  "id": "npendientess5i2",
+  "sectionId": 5,
+  "profile": "pendientes",
+  "text": "Registrar los criterios recuperados y revisar la aplicación de las medidas, al menos al terminar cada trimestre y al finalizar el curso, informando al alumnado y a su familia por los cauces del centro."
+ },
+ {
+  "id": "m19",
+  "sectionId": 1,
+  "profile": "repetidor",
+  "text": "Seleccionar actividades de consolidación a partir de las dificultades que motivaron la permanencia y de la evaluación inicial, evitando repetir sin cambios las mismas tareas."
+ },
+ {
+  "id": "nrepetidors1i2",
+  "sectionId": 1,
+  "profile": "repetidor",
+  "text": "Plantear metas de aprendizaje cercanas y tareas de aplicación que permitan comprobar avances y recuperar la confianza académica."
+ },
+ {
+  "id": "nrepetidors2i1",
+  "sectionId": 2,
+  "profile": "repetidor",
+  "text": "Presentar al inicio de cada secuencia los aprendizajes que se van a reforzar, un ejemplo de realización y las pautas para solicitar ayuda."
+ },
+ {
+  "id": "m41",
+  "sectionId": 3,
+  "profile": "repetidor",
+  "text": "Usar materiales de refuerzo graduados y ejemplos de errores comentados, revisando qué recursos y apoyos fueron útiles en el curso anterior."
+ },
+ {
+  "id": "nrepetidors4i1",
+  "sectionId": 4,
+  "profile": "repetidor",
+  "text": "Realizar revisiones breves del plan de trabajo y organizar apoyos flexibles dentro del grupo, coordinados con tutoría y con el resto del equipo docente."
+ },
+ {
+  "id": "m64",
+  "sectionId": 5,
+  "profile": "repetidor",
+  "text": "Recoger de forma continuada evidencias de los criterios de evaluación mediante tareas, proyectos y pruebas, dando retroalimentación concreta sobre los avances y las dificultades."
+ },
+ {
+  "id": "m20",
+  "sectionId": 1,
+  "profile": "general",
+  "text": "Combinar práctica guiada, situaciones de aplicación y tareas de síntesis sobre los aprendizajes en los que se hayan detectado dificultades."
+ },
+ {
+  "id": "ngenerals1i2",
+  "sectionId": 1,
+  "profile": "general",
+  "text": "Graduar la ayuda y la complejidad de las actividades, retirando progresivamente los apoyos conforme se consoliden los aprendizajes."
+ },
+ {
+  "id": "m32",
+  "sectionId": 2,
+  "profile": "general",
+  "text": "Facilitar explicaciones breves, ejemplos y resúmenes en formatos complementarios, accesibles también fuera de la explicación inicial."
+ },
+ {
+  "id": "m42",
+  "sectionId": 3,
+  "profile": "general",
+  "text": "Utilizar materiales visuales, manipulativos o digitales seleccionados por su utilidad para el aprendizaje y ofrecer alternativa impresa cuando sea necesaria."
+ },
+ {
+  "id": "m51",
+  "sectionId": 4,
+  "profile": "general",
+  "text": "Alternar trabajo individual, parejas y grupos flexibles dentro del aula, con tiempos de ayuda y revisión ajustados a las necesidades detectadas."
+ },
+ {
+  "id": "m65",
+  "sectionId": 5,
+  "profile": "general",
+  "text": "Combinar pruebas, producciones y registros de observación vinculados a los criterios de evaluación, adaptando sus condiciones de realización."
+ },
+ {
+  "id": "ngenerals5i2",
+  "sectionId": 5,
+  "profile": "general",
+  "text": "Ofrecer retroalimentación sobre los errores y nuevas oportunidades de demostrar los aprendizajes, revisando la utilidad de las medidas a lo largo del curso."
+ },
+ {
+  "id": "nlenguajes1i1",
+  "sectionId": 1,
+  "profile": "lenguaje",
+  "text": "Secuenciar las actividades de comprensión y expresión con modelos de respuesta y práctica del vocabulario de la materia en contextos significativos."
+ },
+ {
+  "id": "nlenguajes1i2",
+  "sectionId": 1,
+  "profile": "lenguaje",
+  "text": "Proporcionar apoyos para planificar las intervenciones y los textos, aumentando gradualmente la autonomía comunicativa."
+ },
+ {
+  "id": "nlenguajes2i1",
+  "sectionId": 2,
+  "profile": "lenguaje",
+  "text": "Dar una instrucción cada vez, apoyar el mensaje con ejemplos y comprobar la comprensión mediante una reformulación o una acción."
+ },
+ {
+  "id": "nlenguajes3i1",
+  "sectionId": 3,
+  "profile": "lenguaje",
+  "text": "Facilitar organizadores del discurso, bancos de palabras y los apoyos de comunicación previstos con Orientación y, en su caso, con Audición y Lenguaje."
+ },
+ {
+  "id": "nlenguajes4i1",
+  "sectionId": 4,
+  "profile": "lenguaje",
+  "text": "Prever tiempo de preparación y respuesta, con oportunidades de participación en parejas o grupos pequeños antes de intervenir ante toda la clase."
+ },
+ {
+  "id": "nlenguajes5i1",
+  "sectionId": 5,
+  "profile": "lenguaje",
+  "text": "Ajustar las consignas y el canal de respuesta sin cambiar el criterio evaluado, diferenciando la dificultad comunicativa de los aprendizajes de la materia cuando no sean el mismo objeto de evaluación."
+ },
+ {
+  "id": "nespanols1i1",
+  "sectionId": 1,
+  "profile": "espanol",
+  "text": "Integrar el aprendizaje del español de uso académico en tareas concretas de las materias, con vocabulario y estructuras de respuesta graduadas."
+ },
+ {
+  "id": "nespanols1i2",
+  "sectionId": 1,
+  "profile": "espanol",
+  "text": "Permitir apoyos en la lengua de origen y representaciones no verbales durante el proceso de acceso a los aprendizajes, cuando sean compatibles con la tarea."
+ },
+ {
+  "id": "nespanols2i1",
+  "sectionId": 2,
+  "profile": "espanol",
+  "text": "Acompañar las explicaciones con demostraciones, imágenes y comprobaciones de comprensión, evitando equiparar el nivel de español con la capacidad de aprendizaje."
+ },
+ {
+  "id": "nespanols3i1",
+  "sectionId": 3,
+  "profile": "espanol",
+  "text": "Utilizar glosarios visuales o bilingües y recursos de español como lengua de aprendizaje, coordinados con ATAL cuando ese apoyo esté disponible y proceda."
+ },
+ {
+  "id": "nespanols4i1",
+  "sectionId": 4,
+  "profile": "espanol",
+  "text": "Facilitar interacción con compañeros de referencia y apoyos lingüísticos temporales, manteniendo la participación en el grupo ordinario."
+ },
+ {
+  "id": "nespanols5i1",
+  "sectionId": 5,
+  "profile": "espanol",
+  "text": "Recoger evidencias mediante tareas prácticas, apoyos visuales y consignas accesibles, sin eximir de los aprendizajes lingüísticos cuando formen parte del criterio evaluado."
+ },
+ {
+  "id": "ndesventajas1i1",
+  "sectionId": 1,
+  "profile": "desventaja",
+  "text": "Priorizar un itinerario de tareas esenciales con acompañamiento en el aula, ajustado a las dificultades de aprendizaje y a las oportunidades reales de realización."
+ },
+ {
+  "id": "ndesventajas1i2",
+  "sectionId": 1,
+  "profile": "desventaja",
+  "text": "Contextualizar las actividades en situaciones cercanas y recuperar los aprendizajes que hayan quedado interrumpidos, sin acumular tareas de forma indiscriminada."
+ },
+ {
+  "id": "ndesventajas2i1",
+  "sectionId": 2,
+  "profile": "desventaja",
+  "text": "Dar instrucciones y materiales por vías accesibles para el alumnado, evitando que la consulta del aula virtual sea la única forma de seguir el plan."
+ },
+ {
+  "id": "ndesventajas3i1",
+  "sectionId": 3,
+  "profile": "desventaja",
+  "text": "Asegurar materiales de trabajo sin coste y alternativas impresas o recursos del centro cuando existan barreras de acceso digital o de disponibilidad de material."
+ },
+ {
+  "id": "ndesventajas4i1",
+  "sectionId": 4,
+  "profile": "desventaja",
+  "text": "Reservar tiempo de realización y revisión en el centro y acordar plazos realistas, con coordinación tutorial y apoyos educativos disponibles."
+ },
+ {
+  "id": "ndesventajas5i1",
+  "sectionId": 5,
+  "profile": "desventaja",
+  "text": "Obtener evidencias variadas durante el trabajo en el aula y facilitar entregas o pruebas accesibles, valorando los criterios de aprendizaje sin convertir la falta de recursos en una penalización académica."
+ },
+ {
+  "id": "nmotivacions1i1",
+  "sectionId": 1,
+  "profile": "motivacion",
+  "text": "Ofrecer tareas de investigación o creación elegidas entre varias propuestas relacionadas con los intereses del alumnado y los saberes de la materia."
+ },
+ {
+  "id": "nmotivacions1i2",
+  "sectionId": 1,
+  "profile": "motivacion",
+  "text": "Sustituir parte de la práctica ya dominada por desafíos de ampliación que requieran aplicar, relacionar y justificar lo aprendido."
+ },
+ {
+  "id": "nmotivacions2i1",
+  "sectionId": 2,
+  "profile": "motivacion",
+  "text": "Orientar la búsqueda y el contraste de información con preguntas de investigación y criterios para seleccionar fuentes adecuadas."
+ },
+ {
+  "id": "nmotivacions3i1",
+  "sectionId": 3,
+  "profile": "motivacion",
+  "text": "Facilitar lecturas, herramientas de creación y recursos de experimentación del centro acordes con el proyecto elegido."
+ },
+ {
+  "id": "nmotivacions4i1",
+  "sectionId": 4,
+  "profile": "motivacion",
+  "text": "Planificar momentos de trabajo autónomo y colaboración por intereses dentro del horario lectivo, con hitos de revisión y una carga asumible."
+ },
+ {
+  "id": "nmotivacions5i1",
+  "sectionId": 5,
+  "profile": "motivacion",
+  "text": "Evaluar el proyecto con evidencias y rúbricas referidas a los criterios ordinarios, incluyendo reflexión sobre el proceso sin crear criterios de calificación nuevos por participar en la profundización."
+ },
+ {
+  "id": "v5neaes1",
+  "sectionId": 1,
+  "profile": "neae",
+  "text": "Graduar las actividades según las necesidades identificadas, manteniendo el referente curricular aplicable y retirando las ayudas conforme aumente la autonomía."
+ },
+ {
+  "id": "v5neaes2",
+  "sectionId": 2,
+  "profile": "neae",
+  "text": "Presentar las explicaciones y las consignas con formatos accesibles y comprobar la comprensión conforme a las necesidades de apoyo identificadas."
+ },
+ {
+  "id": "v5neaes3",
+  "sectionId": 3,
+  "profile": "neae",
+  "text": "Facilitar los materiales y las herramientas de apoyo previstos por el equipo docente y Orientación para acceder al aprendizaje de la materia."
+ },
+ {
+  "id": "v5neaes4",
+  "sectionId": 4,
+  "profile": "neae",
+  "text": "Organizar los tiempos, los agrupamientos y los apoyos para favorecer la participación en el grupo ordinario y revisar periódicamente su utilidad."
+ },
+ {
+  "id": "v5neaes5",
+  "sectionId": 5,
+  "profile": "neae",
+  "text": "Adaptar las condiciones y los formatos de evaluación para obtener evidencias de los criterios aplicables, conforme a las medidas educativas establecidas."
+ },
+ {
+  "id": "v5nee_auditivas1",
+  "sectionId": 1,
+  "profile": "nee_auditiva",
+  "text": "Proponer actividades con instrucciones escritas y apoyos visuales que permitan participar sin depender exclusivamente de la información oral."
+ },
+ {
+  "id": "v5nee_auditivas2",
+  "sectionId": 2,
+  "profile": "nee_auditiva",
+  "text": "Asegurar la visibilidad del rostro del docente y de los compañeros, respetar los turnos de intervención y ofrecer subtítulos o transcripciones de los materiales audiovisuales."
+ },
+ {
+  "id": "v5nee_auditivas3",
+  "sectionId": 3,
+  "profile": "nee_auditiva",
+  "text": "Utilizar los dispositivos y apoyos de comunicación indicados para el alumnado, junto con materiales visuales y documentos escritos accesibles."
+ },
+ {
+  "id": "v5nee_auditivas4",
+  "sectionId": 4,
+  "profile": "nee_auditiva",
+  "text": "Ajustar la ubicación y reducir el ruido de fondo, facilitando la comunicación y la participación en los agrupamientos del aula."
+ },
+ {
+  "id": "v5nee_auditivas5",
+  "sectionId": 5,
+  "profile": "nee_auditiva",
+  "text": "Ofrecer consignas accesibles y un medio de respuesta ajustado a las necesidades de comunicación, manteniendo los criterios de evaluación aplicables."
+ },
+ {
+  "id": "v5nee_visuals1",
+  "sectionId": 1,
+  "profile": "nee_visual",
+  "text": "Proponer actividades que permitan acceder a la información gráfica mediante descripciones, materiales manipulativos o alternativas accesibles según la necesidad visual."
+ },
+ {
+  "id": "v5nee_visuals2",
+  "sectionId": 2,
+  "profile": "nee_visual",
+  "text": "Facilitar los textos y las imágenes en el formato indicado, con ampliación, contraste, descripción verbal o acceso digital compatible con los apoyos utilizados."
+ },
+ {
+  "id": "v5nee_visuals3",
+  "sectionId": 3,
+  "profile": "nee_visual",
+  "text": "Disponer de documentos digitales accesibles y de los materiales o productos de apoyo previstos para el alumno o alumna."
+ },
+ {
+  "id": "v5nee_visuals4",
+  "sectionId": 4,
+  "profile": "nee_visual",
+  "text": "Acordar una ubicación, iluminación y organización del espacio que faciliten el acceso a los materiales y los desplazamientos, ajustando los tiempos cuando se necesite."
+ },
+ {
+  "id": "v5nee_visuals5",
+  "sectionId": 5,
+  "profile": "nee_visual",
+  "text": "Adaptar la presentación de las pruebas y las representaciones gráficas para evaluar los mismos aprendizajes sin que una barrera visual condicione el resultado."
+ },
+ {
+  "id": "v5nee_fisicas1",
+  "sectionId": 1,
+  "profile": "nee_fisica",
+  "text": "Adaptar la forma de manipular los materiales y realizar las tareas a las posibilidades de participación del alumnado, manteniendo su finalidad curricular."
+ },
+ {
+  "id": "v5nee_fisicas2",
+  "sectionId": 2,
+  "profile": "nee_fisica",
+  "text": "Proporcionar materiales e instrucciones en soportes que puedan consultarse y manejarse mediante los dispositivos de acceso utilizados por el alumnado."
+ },
+ {
+  "id": "v5nee_fisicas3",
+  "sectionId": 3,
+  "profile": "nee_fisica",
+  "text": "Facilitar los dispositivos de entrada, ayudas técnicas y materiales adaptados establecidos para favorecer la autonomía en el trabajo."
+ },
+ {
+  "id": "v5nee_fisicas4",
+  "sectionId": 4,
+  "profile": "nee_fisica",
+  "text": "Organizar un espacio accesible y tiempos ajustados a la realización y los desplazamientos, coordinando los apoyos necesarios sin aislar del grupo."
+ },
+ {
+  "id": "v5nee_fisicas5",
+  "sectionId": 5,
+  "profile": "nee_fisica",
+  "text": "Permitir medios alternativos de respuesta y ajustar el tiempo de realización cuando sea necesario para demostrar los criterios evaluados sin interferencias de la limitación motora."
+ }
+];
+const PROGRAMMES = [
+ {id:'refuerzo',label:'Programa de refuerzo del aprendizaje (PRA)',note:'Selecciona una o varias de las cuatro situaciones previstas en el artículo 33. Si eliges NEAE, puedes concretar las necesidades de apoyo en el segundo nivel.'},
+ {id:'profundizacion',label:'Programa de profundización',note:'Selecciona el alumnado destinatario del programa según el artículo 34. Puedes personalizar las propuestas directamente.'}
+];
+const $ = id => document.getElementById(id);
+const escapeHTML = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const freshState = () => ({version:4,programme:'refuerzo',profiles:[],checked:{},edits:{},custom:[],documents:{},bases:{},excluded:{}});
+let state = freshState();
+let toastTimer;
+let pendingConfirm = null;
+let focusBeforeDialog = null;
+const own = (obj,key) => Object.hasOwn(obj,key);
+function profileProgramme(id){return PROFILES.find(p=>p.id===id)?.programme||'refuerzo';}
+function activeProfiles(){return state.profiles.filter(id=>profileProgramme(id)===state.programme);}
+function profileName(id){return PROFILES.find(p=>p.id===id)?.label||'Medida propia';}
+function programmeName(){return PROGRAMMES.find(p=>p.id===state.programme).label;}
+function textOf(m){return own(state.edits,m.id)?state.edits[m.id]:m.text;}
+function available(sectionId){return [...MEASURES.filter(m=>m.sectionId===sectionId&&activeProfiles().includes(m.profile)),...state.custom.filter(m=>m.sectionId===sectionId&&m.programme===state.programme)];}
+function proposedText(sectionId){return [...new Set(available(sectionId).filter(m=>state.checked[m.id]!==false).map(textOf))].map(t=>'• '+t).join('\n');}
+function ensureProgramme(programme){for(const key of ['documents','bases','excluded'])if(!state[key][programme])state[key][programme]={};}
+function sectionText(sectionId){ensureProgramme(state.programme);const doc=state.documents[state.programme];return own(doc,sectionId)?doc[sectionId]:proposedText(sectionId);}
+function nonemptyLines(text){return text.split('\n').filter(line=>line.trim());}
+// Solo se retiran las líneas automáticas que siguen intactas. Las ediciones y
+// las líneas añadidas se conservan; las propuestas borradas no reaparecen.
+function mergeProposals(current,previous,next,excluded=[]){
+ const oldLines=new Set(nonemptyLines(previous));
+ const nextLines=nonemptyLines(next), nextSet=new Set(nextLines);
+ const currentLines=current.split('\n'), currentSet=new Set(currentLines);
+ const suppressed=new Set(excluded);
+ for(const line of oldLines){if(currentSet.has(line))suppressed.delete(line);else suppressed.add(line);}
+ const kept=currentLines.filter(line=>!(oldLines.has(line)&&!nextSet.has(line)));
+ const keptSet=new Set(kept);
+ const additions=nextLines.filter(line=>!oldLines.has(line)&&!suppressed.has(line)&&!keptSet.has(line));
+ let text=kept.join('\n');
+ if(additions.length)text+=(text&&!text.endsWith('\n')?'\n':'')+additions.join('\n');
+ return {text,excluded:[...suppressed]};
+}
+function syncDocuments(){
+ const p=state.programme;ensureProgramme(p);
+ for(const s of SECTIONS){
+  const next=proposedText(s.id);
+  if(!own(state.documents[p],s.id))state.documents[p][s.id]=next;
+  else{
+   const merged=mergeProposals(state.documents[p][s.id],state.bases[p][s.id]||'',next,state.excluded[p][s.id]||[]);
+   state.documents[p][s.id]=merged.text;state.excluded[p][s.id]=merged.excluded;
+  }
+  state.bases[p][s.id]=next;
+ }
+}
+function fullText(){return SECTIONS.map(s=>({s,text:sectionText(s.id)})).filter(x=>x.text.trim()).map(({s,text})=>s.id+'. '+s.title.toUpperCase()+'\n'+text).join('\n\n');}
+function notify(message){clearTimeout(toastTimer);$('status').textContent=message;toastTimer=setTimeout(()=>$('status').textContent='',4500);}
+function renderProfiles(){
+ const button=p=>'<button type="button" class="profile" data-profile="'+p.id+'" aria-pressed="'+state.profiles.includes(p.id)+'"><span class="profile-symbol" aria-hidden="true">'+escapeHTML(p.symbol)+'</span><span>'+escapeHTML(p.label)+'</span></button>';
+ $('profiles').innerHTML=PROFILES.filter(p=>p.programme===state.programme&&p.group!=='neae-detail').map(button).join('');
+ $('neaeProfiles').innerHTML=PROFILES.filter(p=>p.group==='neae-detail').map(button).join('');
+ $('neaeDetails').hidden=state.programme!=='refuerzo'||!state.profiles.includes('neae');
+ document.querySelectorAll('[data-programme]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.programme===state.programme)));
+ $('programmeNote').textContent=PROGRAMMES.find(p=>p.id===state.programme).note;
+}
+function initEditors(){
+ $('preview').innerHTML=SECTIONS.map(s=>'<section class="output-section" aria-labelledby="output-title-'+s.id+'"><div class="output-title"><h3 id="output-title-'+s.id+'">'+s.id+'. '+escapeHTML(s.title)+'</h3><div class="output-actions"><button class="btn small" type="button" data-restore="'+s.id+'">Restaurar propuestas</button><button class="btn small primary" type="button" data-copy="'+s.id+'">Copiar apartado</button></div></div><label class="visually-hidden" for="output-'+s.id+'">'+escapeHTML(s.title)+': texto editable</label><textarea id="output-'+s.id+'" data-editor="'+s.id+'" rows="6" maxlength="200000" placeholder="Escribe aquí las medidas o selecciona una categoría para incorporar propuestas." spellcheck="true"></textarea><div class="output-meta"><span class="editor-state" id="editor-state-'+s.id+'"></span><button class="btn link small" type="button" data-highlight="'+s.id+'">Seleccionar texto</button></div></section>').join('');
+}
+function updateCounters(){
+ let hasText=false;
+ for(const s of SECTIONS){
+  const text=sectionText(s.id),filled=Boolean(text.trim());hasText=hasText||filled;
+  const changed=text!==(state.bases[state.programme]?.[s.id]||'');
+  $('editor-state-'+s.id).textContent=changed?'Texto personalizado':(filled?'Propuestas de la categoría':'');
+  $('editor-state-'+s.id).classList.toggle('edited',changed);
+  document.querySelectorAll('[data-copy="'+s.id+'"]').forEach(b=>b.disabled=!filled);
+ }
+ for(const id of ['copyAll','downloadTxt'])$(id).disabled=!hasText;
+}
+function writeEditors(){
+ for(const s of SECTIONS){const area=$('output-'+s.id),text=sectionText(s.id);if(area.value!==text)area.value=text;area.rows=Math.min(14,Math.max(6,text.split('\n').length+2));}
+ updateCounters();
+}
+function render(){syncDocuments();renderProfiles();writeEditors();}
+function editSection(sectionId,text){
+ if(!SECTIONS.some(s=>s.id===sectionId)||typeof text!=='string'||text.length>200000)return;
+ ensureProgramme(state.programme);state.documents[state.programme][sectionId]=text;updateCounters();
+}
+function toggleProfile(id){
+ const profile=PROFILES.find(p=>p.id===id&&p.programme===state.programme);if(!profile)return;
+ state.profiles=state.profiles.includes(id)?state.profiles.filter(x=>x!==id):[...state.profiles,id];
+ if(profile.group==='neae-detail'&&state.profiles.includes(id)&&!state.profiles.includes('neae'))state.profiles.push('neae');
+ if(id==='neae'&&!state.profiles.includes('neae'))state.profiles=state.profiles.filter(id=>PROFILES.find(p=>p.id===id)?.group!=='neae-detail');
+ render();document.querySelector('[data-profile="'+id+'"]')?.focus();
+}
+function setProgramme(programme){
+ if(!PROGRAMMES.some(p=>p.id===programme)||programme===state.programme)return;
+ state.programme=programme;
+ render();document.querySelector('[data-programme="'+programme+'"]')?.focus();
+}
+function openDialog(id){focusBeforeDialog=document.activeElement;$(id).showModal();document.body.classList.add('modal-open');}
+function closeDialog(id){$(id).close();}
+function confirmAction(title,message,callback){$('confirmTitle').textContent=title;$('confirmMessage').textContent=message;pendingConfirm=callback;openDialog('confirmDialog');}
+function restoreSections(ids){
+ ensureProgramme(state.programme);
+ for(const id of ids){state.documents[state.programme][id]=proposedText(id);state.bases[state.programme][id]=proposedText(id);state.excluded[state.programme][id]=[];}
+ writeEditors();notify('Propuestas restauradas.');
+}
+async function copyText(text,message){
+ if(!text.trim()){notify('Escribe o incorpora alguna medida antes de copiar.');return;}
+ if(navigator.clipboard&&globalThis.isSecureContext){try{await navigator.clipboard.writeText(text);notify(message);return;}catch{}}
+ const helper=document.createElement('textarea');helper.value=text;helper.setAttribute('aria-hidden','true');helper.style.cssText='position:fixed;top:0;left:-9999px';document.body.appendChild(helper);helper.select();
+ let copied=false;try{copied=document.execCommand('copy');}catch{}helper.remove();
+ if(copied){notify(message);return;}
+ $('manualText').value=text;openDialog('manualCopy');$('manualText').focus();$('manualText').select();
+}
+function copySection(id){return copyText(sectionText(id),'Apartado '+id+' copiado con tus cambios.');}
+function txtFileName(){
+ const ids=activeProfiles().filter(id=>id!=='neae'||!activeProfiles().some(id=>PROFILES.find(p=>p.id===id)?.group==='neae-detail'));
+ const labels=ids.map(id=>PROFILES.find(p=>p.id===id).fileLabel||profileName(id)).map(name=>name.replace(/[<>:"/\\|?*\u0000-\u001f]/g,' - ').replace(/\s+/g,' ').trim());
+ const type=(labels.join(' + ')||'Personalizado').slice(0,190).replace(/[. ]+$/g,'');
+ return (state.programme==='profundizacion'?'Prof.-':'PRA-')+type+'.txt';
+}
+function downloadText(){
+ const text=fullText();if(!text.trim())return;
+ const url=URL.createObjectURL(new Blob([text+'\n'],{type:'text/plain;charset=utf-8'}));
+ const a=document.createElement('a');a.href=url;a.download=txtFileName();document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Archivo TXT descargado con tus cambios.');
+}
+function init(){
+ initEditors();render();
+ $('programmePicker').addEventListener('click',event=>{const b=event.target.closest('[data-programme]');if(b)setProgramme(b.dataset.programme);});
+ for(const id of ['profiles','neaeProfiles'])$(id).addEventListener('click',event=>{const b=event.target.closest('[data-profile]');if(b)toggleProfile(b.dataset.profile);});
+ $('preview').addEventListener('input',event=>{const area=event.target;if(area.matches('textarea[data-editor]'))editSection(Number(area.dataset.editor),area.value);});
+ document.addEventListener('click',event=>{
+  const b=event.target.closest('button');if(!b||b.disabled)return;
+  if(b.dataset.copy)copySection(Number(b.dataset.copy));
+  else if(b.dataset.restore){const id=Number(b.dataset.restore);confirmAction('Restaurar propuestas del apartado '+id,'El texto de este cuadro se sustituirá por las propuestas de los perfiles seleccionados. Los otros cuadros se conservarán.',()=>restoreSections([id]));}
+  else if(b.dataset.highlight){const area=$('output-'+b.dataset.highlight);area.focus();area.select();}
+  else if(b.dataset.close)closeDialog(b.dataset.close);
+ });
+ $('clearProfiles').addEventListener('click',()=>{state.profiles=state.profiles.filter(id=>profileProgramme(id)!==state.programme);render();notify('Perfiles desmarcados. Se conserva el texto que hayas personalizado.');});
+ $('restoreAll').addEventListener('click',()=>confirmAction('Restaurar las cinco propuestas','Se sustituirán los cinco textos del programa visible por las propuestas de sus perfiles. Los otros programas se conservarán.',()=>restoreSections(SECTIONS.map(s=>s.id))));
+ $('copyAll').addEventListener('click',()=>copyText(fullText(),'Todos los apartados copiados con tus cambios.'));
+ $('downloadTxt').addEventListener('click',downloadText);
+ $('confirmCancel').addEventListener('click',()=>{pendingConfirm=null;closeDialog('confirmDialog');});
+ $('confirmAccept').addEventListener('click',()=>{const action=pendingConfirm;pendingConfirm=null;closeDialog('confirmDialog');action?.();});
+ document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');if(dialog.id==='confirmDialog')pendingConfirm=null;if(focusBeforeDialog?.isConnected)focusBeforeDialog.focus();}));
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
