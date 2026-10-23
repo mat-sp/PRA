@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-version="8">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2f5870">
-<meta name="description" content="Generador de medidas para los programas de refuerzo del aprendizaje y profundización del IES Sancti Petri. Propuestas adaptadas a las orientaciones compartidas por PT, editables para copiar en Séneca.">
+<meta name="description" content="Generador de medidas de refuerzo del aprendizaje y profundización para aplicar directamente con el alumnado desde cada asignatura. IES Sancti Petri. Textos editables para Séneca.">
 <title>PRA y profundización · IES Sancti Petri</title>
 <style>
 :root{--navy:#2f5870;--navy-dark:#254a61;--cyan:#2387a4;--cyan-dark:#1b718b;--pale:#edf5f9;--light:#dceaf3;--line:#c8d4db;--ink:#263944;--muted:#526b79;--bg:#f4f6f7;--danger:#993d32}
@@ -30,7 +30,7 @@ dialog{width:min(560px,calc(100vw - 28px));padding:0;border:1px solid #abc1cf;bo
 </header>
 <main class="app" id="main">
   <section class="panel" aria-labelledby="profileTitle">
-    <div class="panel-head blue"><div><h2 id="profileTitle">Selecciona el programa y las categorías</h2><p class="help">Las propuestas aparecerán en los cinco cuadros de abajo. Puedes borrar, reescribir o añadir texto directamente en ellos.</p></div><button class="btn small" id="clearProfiles" type="button">Desmarcar categorías</button></div>
+    <div class="panel-head blue"><div><h2 id="profileTitle">Selecciona el programa y las categorías</h2><p class="help">Las propuestas se refieren a actuaciones directas con el alumnado en tu asignatura. Puedes borrar, reescribir o añadir texto en los cinco cuadros de abajo.</p></div><button class="btn small" id="clearProfiles" type="button">Desmarcar categorías</button></div>
     <div class="panel-body">
       <div class="programme-row" id="programmePicker" role="group" aria-label="Programa educativo"><button class="btn programme-toggle" type="button" data-programme="refuerzo" aria-pressed="true">PRA · Refuerzo del aprendizaje</button><button class="btn programme-toggle" type="button" data-programme="profundizacion" aria-pressed="false">Programa de profundización</button></div>
       <p class="programme-note" id="programmeNote"></p>
@@ -46,8 +46,8 @@ dialog{width:min(560px,calc(100vw - 28px));padding:0;border:1px solid #abc1cf;bo
       <p class="result-help">Edita cada cuadro como necesites. <strong>Copiar apartado</strong> copia exactamente el texto que ves, sin el título.</p>
     </section>
   </div>
-  <details class="review-details"><summary>Categorías oficiales y referencias</summary><p>El artículo 33 de la Orden de ESO, en su redacción de agosto de 2026, dirige el PRA al alumnado que no promociona, al que promociona con materias anteriores no superadas, al que presenta dificultades de aprendizaje que justifican su inclusión y al alumnado con NEAE que le impiden seguir su aprendizaje con aprovechamiento. Estas son las cuatro categorías principales. El orden mostrado es orientativo de uso habitual; no representa una estadística de frecuencia del centro.</p><p>Las opciones del segundo nivel concretan las necesidades de apoyo dentro de NEAE y no constituyen tipos independientes de PRA. Se utilizan denominaciones de la LOE y del protocolo andaluz de identificación de NEAE. Las medidas se individualizan con el equipo docente, tutoría y Orientación.</p><p>La profundización se dirige al alumnado especialmente motivado para el aprendizaje y al alumnado con altas capacidades intelectuales. El refuerzo mantiene los referentes de evaluación aplicables; la profundización enriquece los saberes sin modificar los criterios ordinarios.</p><p>Referencias: <a href="https://www.juntadeandalucia.es/boja/2026/168/c03/2" target="_blank" rel="noopener noreferrer">Orden de 31 de agosto de 2026, art. 7 (modificación del art. 33 de ESO)</a>; <a href="https://www.juntadeandalucia.es/boja/2023/104/36" target="_blank" rel="noopener noreferrer">Orden de 30 de mayo de 2023 (ESO), arts. 32 y 34–36</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a71" target="_blank" rel="noopener noreferrer">LOE, art. 71.2</a>; <a href="https://blogsaverroes.juntadeandalucia.es/3033dea/aclaraciones-terminologicas/" target="_blank" rel="noopener noreferrer">EOEE de dificultades de aprendizaje de Granada: terminología del protocolo de 8 de marzo de 2017</a>.</p></details>
-  <details class="review-details" id="ptGuidance"><summary>Orientaciones del PT del centro</summary><p>Propuestas revisadas a partir de los documentos «Estrategias NEAE» e «Intervenciones NEAE», compartidos por PT del IES Sancti Petri. Los materiales de consulta están firmados por @psico_mporienta y @edumagiaenelauladeal. Se han adaptado a Secundaria y a los cinco apartados del programa.</p><p>Se aplican según las necesidades observadas y los apoyos acordados con PT y Orientación: una misma dificultad puede requerir respuestas diferentes. Las propuestas de discapacidad sensorial o física y vulnerabilidad socioeducativa son adaptaciones complementarias con un enfoque similar, ya que los documentos no incluyen fichas específicas para esos perfiles. Las pautas de planificación, participación y regulación emocional se integran de forma transversal; las altas capacidades se trabajan en profundización.</p></details>
+  <details class="review-details"><summary>Categorías oficiales y referencias</summary><p>El artículo 33 de la Orden de ESO, en su redacción de agosto de 2026, dirige el PRA al alumnado que no promociona, al que promociona con materias anteriores no superadas, al que presenta dificultades de aprendizaje que justifican su inclusión y al alumnado con NEAE que le impiden seguir su aprendizaje con aprovechamiento. Estas son las cuatro categorías principales. El orden mostrado es orientativo de uso habitual; no representa una estadística de frecuencia del centro.</p><p>Las opciones del segundo nivel concretan las necesidades de apoyo dentro de NEAE y no constituyen tipos independientes de PRA. Se utilizan denominaciones de la LOE y del protocolo andaluz de identificación de NEAE. Cada profesor o profesora selecciona y concreta las actuaciones que aplicará directamente con el alumnado en su asignatura.</p><p>La profundización se dirige al alumnado especialmente motivado para el aprendizaje y al alumnado con altas capacidades intelectuales. El refuerzo mantiene los referentes de evaluación aplicables; la profundización enriquece los saberes sin modificar los criterios ordinarios.</p><p>Referencias: <a href="https://www.juntadeandalucia.es/boja/2026/168/c03/2" target="_blank" rel="noopener noreferrer">Orden de 31 de agosto de 2026, art. 7 (modificación del art. 33 de ESO)</a>; <a href="https://www.juntadeandalucia.es/boja/2023/104/36" target="_blank" rel="noopener noreferrer">Orden de 30 de mayo de 2023 (ESO), arts. 32 y 34–36</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a71" target="_blank" rel="noopener noreferrer">LOE, art. 71.2</a>; <a href="https://blogsaverroes.juntadeandalucia.es/3033dea/aclaraciones-terminologicas/" target="_blank" rel="noopener noreferrer">EOEE de dificultades de aprendizaje de Granada: terminología del protocolo de 8 de marzo de 2017</a>.</p></details>
+  <details class="review-details" id="subjectGuidance"><summary>Medidas para aplicar desde la asignatura</summary><p>Las propuestas describen actividades, recursos, ajustes de acceso, organización del aula y formas de evaluación que el profesor o profesora puede aplicar directamente con el alumnado en su materia. Selecciona las que correspondan y concreta su aplicación en los cuadros editables.</p><p>La revisión toma como base los materiales «Estrategias NEAE» e «Intervenciones NEAE», compartidos por el PT del IES Sancti Petri y firmados por @psico_mporienta y @edumagiaenelauladeal. Esta referencia indica la procedencia de los materiales de consulta y no forma parte del texto que se copia en Séneca.</p></details>
   <noscript><p>Activa JavaScript en tu navegador para seleccionar y copiar las medidas.</p></noscript>
 </main>
 <footer class="site-footer"><p>Web realizada por <strong>Diego Bernal Montañés</strong> · IES Sancti Petri</p><p>Inspirada en el <a href="https://rcabreratic-comares.github.io/PRA/" target="_blank" rel="noopener noreferrer">Generador de PRA de @rcabreratic · IES Marqués de Comares</a>.</p></footer>
@@ -310,25 +310,25 @@ const MEASURES = [
   "id": "m40",
   "sectionId": 3,
   "profile": "pendientes",
-  "text": "Ofrecer un dossier o itinerario de recuperación con ejemplos comentados y orientaciones para revisar las dificultades más frecuentes."
+  "text": "Ofrecer un itinerario de recuperación de la materia con ejemplos comentados y pautas para revisar las dificultades más frecuentes."
  },
  {
-  "id": "m50",
-  "sectionId": 4,
+  "id": "v8_pendientes_4_1",
   "profile": "pendientes",
-  "text": "Acordar entregas parciales y momentos periódicos de revisión durante el horario disponible, coordinando la carga de las distintas materias pendientes."
+  "sectionId": 4,
+  "text": "Establecer con el alumnado entregas parciales y momentos de revisión de la materia pendiente, con un calendario de trabajo claro y asumible."
  },
  {
   "id": "m63",
   "sectionId": 5,
   "profile": "pendientes",
-  "text": "Utilizar las tareas y pruebas previstas por el departamento para recoger evidencias de los criterios pendientes, sin fijar porcentajes universales por instrumento."
+  "text": "Utilizar tareas y pruebas de la materia para recoger evidencias de los criterios pendientes y dar indicaciones concretas sobre los aprendizajes que necesita recuperar."
  },
  {
   "id": "npendientess5i2",
   "sectionId": 5,
   "profile": "pendientes",
-  "text": "Registrar los criterios recuperados y revisar la aplicación de las medidas, al menos al terminar cada trimestre y al finalizar el curso, informando al alumnado y a su familia por los cauces del centro."
+  "text": "Registrar los criterios recuperados y revisar periódicamente las medidas de la materia, explicando al alumnado sus avances y los aprendizajes que todavía debe reforzar."
  },
  {
   "id": "m19",
@@ -355,10 +355,10 @@ const MEASURES = [
   "text": "Usar materiales de refuerzo graduados y ejemplos de errores comentados, revisando qué recursos y apoyos fueron útiles en el curso anterior."
  },
  {
-  "id": "nrepetidors4i1",
-  "sectionId": 4,
+  "id": "v8_repetidor_4_1",
   "profile": "repetidor",
-  "text": "Realizar revisiones breves del plan de trabajo y organizar apoyos flexibles dentro del grupo, coordinados con tutoría y con el resto del equipo docente."
+  "sectionId": 4,
+  "text": "Revisar brevemente el plan de trabajo de la asignatura durante la clase y organizar ayuda individual o grupos flexibles según las dificultades observadas."
  },
  {
   "id": "m64",
@@ -382,7 +382,7 @@ const MEASURES = [
   "id": "pt7_neae_1_3",
   "sectionId": 1,
   "profile": "neae",
-  "text": "Practicar cómo pedir ayuda, esperar un turno y expresar un desacuerdo, con pocas normas claras, modelado y una respuesta calmada y coherente del equipo docente."
+  "text": "Practicar en las actividades de la materia cómo pedir ayuda, esperar un turno y expresar un desacuerdo, con normas claras, modelado y una respuesta calmada del profesor o profesora."
  },
  {
   "id": "pt7_neae_2_1",
@@ -397,10 +397,10 @@ const MEASURES = [
   "text": "Anticipar las actividades y sus cambios, reformulando la explicación cuando sea necesario y dejando tiempo suficiente para procesar y responder."
  },
  {
-  "id": "pt7_neae_3_1",
-  "sectionId": 3,
+  "id": "v8_neae_3_1",
   "profile": "neae",
-  "text": "Seleccionar con PT y Orientación modelos, listas de pasos, organizadores y herramientas de acceso adecuados a la edad y a las necesidades identificadas."
+  "sectionId": 3,
+  "text": "Facilitar ejemplos resueltos, listas de pasos y organizadores de los contenidos de la asignatura, adecuados a su edad y a las dificultades observadas."
  },
  {
   "id": "pt7_neae_4_1",
@@ -421,12 +421,6 @@ const MEASURES = [
   "text": "Ofrecer condiciones y formatos accesibles para demostrar los criterios aplicables, diferenciando el aprendizaje evaluado de las barreras de atención, comunicación, escritura o acceso que no formen parte de ese criterio."
  },
  {
-  "id": "pt7_neae_5_2",
-  "sectionId": 5,
-  "profile": "neae",
-  "text": "Registrar muestras de aprendizaje y el nivel de ayuda necesario, revisar qué apoyos funcionan y acordar ajustes con el equipo docente, PT y Orientación."
- },
- {
   "id": "pt7_neae_5_3",
   "sectionId": 5,
   "profile": "neae",
@@ -437,12 +431,6 @@ const MEASURES = [
   "sectionId": 1,
   "profile": "dea_lectura",
   "text": "Trabajar textos breves y significativos por fragmentos, activando lo que sabe del tema y guiando la identificación de ideas y relaciones."
- },
- {
-  "id": "pt7_dea_lectura_1_2",
-  "sectionId": 1,
-  "profile": "dea_lectura",
-  "text": "Coordinar con PT la práctica explícita de las habilidades lectoras que necesite, con textos adecuados a su edad y sin exigir lectura pública imprevista."
  },
  {
   "id": "pt7_dea_lectura_1_3",
@@ -563,12 +551,6 @@ const MEASURES = [
   "sectionId": 1,
   "profile": "dea_escritura",
   "text": "Reducir la copia mecánica y entregar un esquema base para que pueda atender a la explicación y dedicar el esfuerzo a elaborar sus ideas."
- },
- {
-  "id": "pt7_dea_escritura_1_2",
-  "sectionId": 1,
-  "profile": "dea_escritura",
-  "text": "Planificar la respuesta oralmente o con un organizador antes de escribir; trabajar la escritura funcional en periodos breves según las orientaciones de PT."
  },
  {
   "id": "pt7_dea_escritura_2_1",
@@ -739,16 +721,10 @@ const MEASURES = [
   "text": "Comprobar la comprensión pidiendo que muestre la acción o reformule el paso, y reformular el mensaje cuando no lo comprenda."
  },
  {
-  "id": "pt7_lenguaje_3_1",
-  "sectionId": 3,
-  "profile": "lenguaje",
-  "text": "Utilizar bancos de palabras, mapas semánticos y guiones para describir, narrar o argumentar, coordinados con PT y, cuando proceda, con Audición y Lenguaje."
- },
- {
   "id": "pt7_lenguaje_3_2",
   "sectionId": 3,
   "profile": "lenguaje",
-  "text": "Facilitar los apoyos de comunicación indicados y modelos de respuesta que pueda consultar sin depender de memorizar toda la explicación oral."
+  "text": "Facilitar bancos de palabras, guiones de explicación y modelos de respuesta de la materia que pueda consultar sin depender de memorizar toda la explicación oral."
  },
  {
   "id": "pt7_lenguaje_4_1",
@@ -808,7 +784,7 @@ const MEASURES = [
   "id": "pt7_nee_tea_3_2",
   "sectionId": 3,
   "profile": "nee_tea",
-  "text": "Disponer de los apoyos de comunicación y regulación sensorial acordados, respetando las estrategias de autorregulación que no causen daño."
+  "text": "Facilitar en el aula apoyos de comunicación y recursos para la regulación sensorial que le resulten útiles, respetando las estrategias de autorregulación que no causen daño."
  },
  {
   "id": "pt7_nee_tea_4_1",
@@ -826,7 +802,7 @@ const MEASURES = [
   "id": "pt7_nee_tea_5_1",
   "sectionId": 5,
   "profile": "nee_tea",
-  "text": "Presentar pruebas con estructura conocida, preguntas sin ambigüedad y los apoyos de acceso acordados, anticipando su organización."
+  "text": "Presentar las pruebas de la materia con estructura conocida, preguntas sin ambigüedad y apoyos de acceso que ya utilice en clase, anticipando su organización."
  },
  {
   "id": "pt7_nee_tea_5_2",
@@ -856,31 +832,19 @@ const MEASURES = [
   "id": "pt7_desventaja_3_1",
   "sectionId": 3,
   "profile": "desventaja",
-  "text": "Asegurar materiales sin coste y préstamo de recursos del centro, con alternativas impresas cuando no disponga de dispositivos o conexión."
+  "text": "Facilitar los materiales necesarios para las actividades de la materia, con alternativas impresas cuando no disponga de dispositivos o conexión."
  },
  {
   "id": "pt7_desventaja_4_1",
   "sectionId": 4,
   "profile": "desventaja",
-  "text": "Reservar tiempo de realización en el centro, acordar plazos viables y organizar colaboración entre iguales sin exponer públicamente sus circunstancias."
- },
- {
-  "id": "pt7_desventaja_4_2",
-  "sectionId": 4,
-  "profile": "desventaja",
-  "text": "Coordinar con tutoría el seguimiento de la participación y la recuperación del trabajo tras ausencias, con una carga priorizada y asumible."
+  "text": "Reservar tiempo de realización durante las clases de la materia, acordar plazos viables con el alumnado y organizar colaboración entre iguales sin exponer públicamente sus circunstancias."
  },
  {
   "id": "pt7_desventaja_5_1",
   "sectionId": 5,
   "profile": "desventaja",
   "text": "Recoger evidencias durante la actividad de aula y ofrecer vías de entrega accesibles para que la disponibilidad de recursos no condicione la valoración del aprendizaje."
- },
- {
-  "id": "pt7_desventaja_5_2",
-  "sectionId": 5,
-  "profile": "desventaja",
-  "text": "Revisar el progreso y la utilidad de los apoyos con el equipo docente, valorando los criterios de la materia sin convertir las circunstancias familiares o económicas en penalizaciones."
  },
  {
   "id": "pt7_nee_intelectual_1_1",
@@ -913,12 +877,6 @@ const MEASURES = [
   "text": "Utilizar objetos reales, materiales manipulativos, secuencias visuales y modelos de tareas de Secundaria, sin infantilizar su presentación."
  },
  {
-  "id": "pt7_nee_intelectual_3_2",
-  "sectionId": 3,
-  "profile": "nee_intelectual",
-  "text": "Facilitar listas de autonomía, apoyos de comunicación y herramientas funcionales acordadas con PT y Orientación."
- },
- {
   "id": "pt7_nee_intelectual_4_1",
   "sectionId": 4,
   "profile": "nee_intelectual",
@@ -931,16 +889,10 @@ const MEASURES = [
   "text": "Recoger evidencias prácticas, orales, visuales o escritas referidas al currículo aplicable y registrar también el nivel de ayuda y la generalización del aprendizaje."
  },
  {
-  "id": "pt7_nee_intelectual_5_2",
-  "sectionId": 5,
-  "profile": "nee_intelectual",
-  "text": "Combinar observación sistemática, producciones y portafolio con pruebas accesibles, coordinando los referentes de evaluación establecidos para el alumnado."
- },
- {
   "id": "pt7_ecophe_1_1",
   "sectionId": 1,
   "profile": "ecophe",
-  "text": "Partir de una valoración de su escolarización y conocimientos previos para proponer un itinerario de incorporación, sin equiparar llegada reciente con desconocimiento del español."
+  "text": "Identificar sus conocimientos previos de la materia mediante tareas iniciales para proponer un itinerario de incorporación a sus aprendizajes, sin equiparar llegada reciente con desconocimiento del español."
  },
  {
   "id": "pt7_ecophe_1_2",
@@ -952,25 +904,19 @@ const MEASURES = [
   "id": "pt7_ecophe_2_1",
   "sectionId": 2,
   "profile": "ecophe",
-  "text": "Explicar las rutinas del centro y las consignas de las materias con demostraciones, ejemplos y apoyos lingüísticos solo cuando los necesite."
+  "text": "Explicar las rutinas de trabajo y las consignas de la asignatura con demostraciones, ejemplos y apoyos lingüísticos cuando los necesite."
  },
  {
   "id": "pt7_ecophe_3_1",
   "sectionId": 3,
   "profile": "ecophe",
-  "text": "Facilitar una guía de acogida académica, materiales esenciales y, si procede, glosarios visuales o bilingües como puente hacia el vocabulario de la materia."
+  "text": "Facilitar una guía de inicio de la asignatura con los materiales esenciales y, si procede, glosarios visuales o bilingües para acceder a su vocabulario."
  },
  {
   "id": "pt7_ecophe_4_1",
   "sectionId": 4,
   "profile": "ecophe",
-  "text": "Acordar compañeros de acogida y roles sencillos para participar en el grupo, con tiempo de adaptación y seguimiento desde tutoría."
- },
- {
-  "id": "pt7_ecophe_4_2",
-  "sectionId": 4,
-  "profile": "ecophe",
-  "text": "Coordinar las demandas de las materias y las comunicaciones con la familia por vías comprensibles, evitando acumular tareas previas sin priorización."
+  "text": "Organizar parejas de referencia y roles sencillos en las actividades de la asignatura, dando tiempo para conocer las rutinas de trabajo y participar en el grupo."
  },
  {
   "id": "pt7_ecophe_5_1",
@@ -988,7 +934,7 @@ const MEASURES = [
   "id": "pt7_espanol_1_1",
   "sectionId": 1,
   "profile": "espanol",
-  "text": "Enseñar vocabulario y estructuras académicas dentro de las tareas de cada materia, con modelos de frase y práctica gradual."
+  "text": "Enseñar el vocabulario y las estructuras académicas que necesita para realizar las tareas de la asignatura, con modelos de frase y práctica gradual."
  },
  {
   "id": "pt7_espanol_1_2",
@@ -1009,10 +955,10 @@ const MEASURES = [
   "text": "Anticipar las palabras clave y activar sus conocimientos del tema sin interpretar la dificultad para expresarse en español como falta de capacidad."
  },
  {
-  "id": "pt7_espanol_3_1",
-  "sectionId": 3,
+  "id": "v8_espanol_3_1",
   "profile": "espanol",
-  "text": "Facilitar glosarios visuales o bilingües, diccionarios y guiones de respuesta adecuados a su edad, en coordinación con ATAL cuando proceda y esté disponible."
+  "sectionId": 3,
+  "text": "Utilizar glosarios visuales o bilingües, diccionarios y guiones de respuesta centrados en el vocabulario y las tareas de la asignatura."
  },
  {
   "id": "pt7_espanol_4_1",
@@ -1051,10 +997,10 @@ const MEASURES = [
   "text": "Facilitar subtítulos, transcripciones y apuntes de los contenidos esenciales, respetando el sistema de comunicación que utilice."
  },
  {
-  "id": "pt7_nee_auditiva_3_1",
-  "sectionId": 3,
+  "id": "v8_nee_auditiva_3_1",
   "profile": "nee_auditiva",
-  "text": "Utilizar los productos de apoyo auditivo o de comunicación prescritos y acordados con los especialistas, junto a materiales visuales accesibles."
+  "sectionId": 3,
+  "text": "Preparar esquemas escritos, transcripciones y materiales visuales de la materia, asegurando que los recursos empleados en clase sean accesibles con sus medios habituales de comunicación."
  },
  {
   "id": "pt7_nee_auditiva_4_1",
@@ -1084,7 +1030,7 @@ const MEASURES = [
   "id": "pt7_nee_visual_2_1",
   "sectionId": 2,
   "profile": "nee_visual",
-  "text": "Verbalizar lo que se señala o escribe y facilitar los materiales con antelación en el formato de acceso indicado para el alumnado."
+  "text": "Verbalizar lo que se señala o escribe durante la explicación y facilitar con antelación los materiales de la asignatura en un formato que el alumnado pueda utilizar."
  },
  {
   "id": "pt7_nee_visual_2_2",
@@ -1096,7 +1042,7 @@ const MEASURES = [
   "id": "pt7_nee_visual_3_1",
   "sectionId": 3,
   "profile": "nee_visual",
-  "text": "Disponer de documentos accesibles, materiales manipulativos o en relieve y los productos de apoyo indicados, evitando imágenes sin descripción y documentos que solo sean una fotografía del texto."
+  "text": "Facilitar documentos accesibles y materiales manipulativos o en relieve para las actividades de la materia, evitando imágenes sin descripción y documentos que solo sean una fotografía del texto."
  },
  {
   "id": "pt7_nee_visual_4_1",
@@ -1129,10 +1075,10 @@ const MEASURES = [
   "text": "Ofrecer las explicaciones y los materiales en soportes que pueda consultar con autonomía mediante sus dispositivos habituales, reduciendo la copia y los cambios de soporte innecesarios."
  },
  {
-  "id": "pt7_nee_fisica_3_1",
-  "sectionId": 3,
+  "id": "v8_nee_fisica_3_1",
   "profile": "nee_fisica",
-  "text": "Facilitar mobiliario, útiles y dispositivos de entrada adaptados según las indicaciones de los profesionales de referencia y comprobar su compatibilidad con los recursos de la materia."
+  "sectionId": 3,
+  "text": "Facilitar plantillas digitales, materiales de fácil manejo y soportes compatibles con sus dispositivos habituales para que pueda realizar las tareas de la asignatura con autonomía."
  },
  {
   "id": "pt7_nee_fisica_4_1",
@@ -1204,7 +1150,7 @@ const MEASURES = [
   "id": "pt7_alcain_1_2",
   "sectionId": 1,
   "profile": "alcain",
-  "text": "Proponer problemas abiertos con distintas soluciones y proyectos que conecten disciplinas, permitiendo elegir preguntas, procedimientos y productos."
+  "text": "Proponer problemas abiertos con distintas soluciones y proyectos que relacionen los contenidos de la materia con situaciones reales, permitiendo elegir preguntas, procedimientos y productos."
  },
  {
   "id": "pt7_alcain_1_3",
